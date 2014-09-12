@@ -16,16 +16,17 @@ parpool;
 
 dirlist = dir([vid_path '*.png']);
 
-tmp = load ('3rd_party/voc-release3.1/INRIA/inria_final.mat');  %% load the model for human. This can be changed to any of those 20 objects in PASCAL competition.
+tmp = load('pose-release-ver1.2/code-basic/BUFFY_final.mat');
+% tmp = load ('3rd_party/voc-release3.1/INRIA/inria_final.mat');  %% load the model for human. This can be changed to any of those 20 objects in PASCAL competition.
 model= tmp.model;
 clear tmp
 
-parfor i=1:length(dirlist)
+for i=1:length(dirlist)
   display(['frame ' num2str(i)])
   im = imread([vid_path dirlist(i).name]);
   im = imresize(im,2);                %% double the image size to detect small objects.
   
-  boxes = detect(im, model, thresh);  %% running the detector
+  boxes = detect_pose(im, model, thresh);  %% running the detector
   bbox =  getboxes(model, boxes);
   
   bboxes(i).bbox = nms(bbox, 0.5);    %% running non-max-suppression to suppress overlaping weak detections.

@@ -12,3 +12,5 @@ mex -O features.cc
 % mex -O fconvMT.cc -outdir fconv 
 % 3) basic convolution, very compatible
 mex -O fconv.cc -outdir fconv
+
+addpath(genpath('fconv'));

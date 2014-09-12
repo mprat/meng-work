@@ -1,7 +1,8 @@
 clear
 addpath(genpath('tracking_cvpr11_release_v1.0/'))
 addpath(genpath('pose-release-ver1.2/'))
-addpath(genpath('edx-vids/'))
+addpath(genpath('~/Dropbox/MEng/edx-vids/'))
+addpath(genpath('~/Dropbox/MEng/cache/'))
 
 %for tracking
 addpath('tracking_cvpr11_release_v1.0/3rd_party/voc-release3.1/');           %% this code is downloaded from http://people.cs.uchicago.edu/~pff/latent/
@@ -15,4 +16,4 @@ setenv('PATH', [getenv('PATH') ':/usr/local/bin'])
 
 run('pose-release-ver1.2/code-basic/compile');
 
-addpath(genpath('pose-release-ver1.2/code-basic/fconv'))
+addpath(genpath('pose-release-ver1.2/code-basic/fconv'));
