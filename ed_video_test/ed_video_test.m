@@ -4,10 +4,14 @@ clear
 % compile                                         %% compiling mex files for part-based object detector
 % cd('../..');
 
+addpath('tracking-release-v1.0');
+addpath('pose-release-v1.2');
+addpath('standard-datasets');
+
 datadir  = '~/Dropbox/MEng/edx-vids/';
 cachedir = '~/Dropbox/MEng/cache/';
 mkdir(cachedir);
-vid_name = 'M-3091X-FA12-L1-3_100-10_secs';
+vid_name = 'M-3091X-FA12-L1-3_100-4_secs';
 vid_path = [datadir vid_name '/'];
 
 %%% Run object/human detector on all frames.
@@ -68,7 +72,7 @@ display('writing the results into a video file ...')
 % end
 % save([datadir 'label_image_file'], 'bws')
 
-load('tracking_cvpr11_release_v1.0/data/label_image_file');
+load('tracking-release-v1.0/label_image_file');
 m=2;
 for i=1:length(bws)                   %% adds some margin to the label images
   [sz1, sz2] = size(bws(i).bw);
