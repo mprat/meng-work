@@ -1,4 +1,4 @@
-function pyra = featpyramid_pose(im, model)
+function pyra = featpyramid(im, model)
 % Compute feature pyramid.
 %
 % pyra.feat{i} is the i-th level of the feature pyramid.

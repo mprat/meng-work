@@ -9,7 +9,7 @@ function boxes = detect_pose(im, model, thresh)
 % Each set of the first 4 columns specify the bounding box for a part
 
 % Compute the feature pyramid and prepare filter
-pyra     = featpyramid_pose(im,model);
+pyra     = featpyramid(im,model);
 interval = model.interval;
 levels   = 1:length(pyra.feat);
 

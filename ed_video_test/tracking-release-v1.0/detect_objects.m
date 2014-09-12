@@ -24,12 +24,15 @@ clear tmp
 parfor i=1:length(dirlist)
   display(['frame ' num2str(i)])
   im = imread([vid_path dirlist(i).name]);
-  im = imresize(im,2);                %% double the image size to detect small objects.
+%   uncomment the next line because the images are pretty large
+%   im = imresize(im,2);                %% double the image size to detect small objects.
   
+%   the output of boxes here is ~5267x74 double
   boxes = detect(im, model, thresh);  %% running the detector
-  bbox =  getboxes(model, boxes);
+%   bbox =  getboxes(model, boxes);
   
-  bboxes(i).bbox = nms(bbox, 0.5);    %% running non-max-suppression to suppress overlaping weak detections.
+  bboxes(i).bbox = nms(boxes, .1); % parameters taken from the pose estimator
+%   bboxes(i).bbox = nms(bbox, 0.5);    %% running non-max-suppression to suppress overlaping weak detections.
 end
 dres = bboxes2dres(bboxes);           %% converting the data format.
 dres.x = dres.x/2;                    %% compensate doubling image size.
