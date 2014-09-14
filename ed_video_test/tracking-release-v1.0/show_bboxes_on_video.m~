@@ -31,7 +31,7 @@ mkdir (output_frames);
 
 col = round((rand(3,1e4)/2+.5)*255);  %% we assume number of tracks is less than 1e4.
 
-dirlist = dir([input_frames '*.jpg']);  %%list of images
+dirlist = dir([input_frames '*.j']);  %%list of images
 if isempty(dirlist)
   dirlist = dir([input_frames '*.png']);
 end
@@ -51,11 +51,7 @@ for i = 1:len1
   end
   if ~isempty(bbox)
     inds = find(bbox(:,end) > thr);
-    im1 = showboxes(im1, bbox(inds, :));
-%     image(im1);
-%     disp('press enter to continue');
-%     pause;
-%     im1 = show_bbox_on_image(im1, bbox(inds, :), bws, col);
+    im1 = show_bbox_on_image(im1, bbox(inds, :), bws, col);
   end
   imwrite(im1, [output_frames sprintf('%0.8d', i) '.jpg']); %%write the output image
 end

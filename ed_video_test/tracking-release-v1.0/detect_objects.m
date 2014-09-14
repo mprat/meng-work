@@ -30,8 +30,8 @@ parfor i=1:length(dirlist)
 %   the output of boxes here is ~5267x74 double
   boxes = detect(im, model, thresh);  %% running the detector
 %   bbox =  getboxes(model, boxes);
-  
-  bboxes(i).bbox = nms(boxes, .1); % parameters taken from the pose estimator
+  boxes = nms(boxes, .1); % parameters taken from the pose estimator
+  bboxes(i).bbox = boxes; %(1,:); % save only the best detection
 %   bboxes(i).bbox = nms(bbox, 0.5);    %% running non-max-suppression to suppress overlaping weak detections.
 end
 dres = bboxes2dres(bboxes);           %% converting the data format.
