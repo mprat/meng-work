@@ -28,10 +28,10 @@ for j = floor(size(bbox,2)/4):-1:1 %%for all parts
       im1(max(1,y1):min(sz1,y2),        max(1,x1-m1):min(sz2,x1+m2),  k) = col(k, bbox(i,end));
       im1(max(1,y1):min(sz1,y2),        max(1,x2-m1):min(sz2,x2+m2),  k) = col(k, bbox(i,end));
     end
-    if ~isempty(bws)  %% add text if needed
-      col1  = col(:, bbox(i, end));
-      im1 = show_text_on_image(im1, num2str(bbox(i,end)), col1, min(max(x1-10,1),sz2), min(max(y1-20,1),sz1), 20, bws(bbox(i,end)).bw);
-    end
+%     if ~isempty(bws)  %% add text if needed
+%       col1  = col(:, bbox(i, end));
+%       im1 = show_text_on_image(im1, num2str(bbox(i,end)), col1, min(max(x1-10,1),sz2), min(max(y1-20,1),sz1), 20, bws(bbox(i,end)).bw);
+%     end
   end
 end
 

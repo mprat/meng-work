@@ -4,7 +4,7 @@ clear
 % compile                                         %% compiling mex files for part-based object detector
 % cd('../..');
 
-addpath('tracking-release-v1.0');
+addpath(genpath('tracking-release-v1.0'));
 addpath('pose-release-v1.2');
 addpath('standard-datasets');
 
@@ -56,11 +56,11 @@ dres_dp_nms   = tracking_dp(dres, c_en, c_ex, c_ij, betta, thr_cost, max_it, 1);
 dres_dp_nms.r = -dres_dp_nms.id;
 toc
 
-tic
-display('in push relabel algorithm ...')
-dres_push_relabel   = tracking_push_relabel(dres, c_en, c_ex, c_ij, betta, max_it);
-dres_push_relabel.r = -dres_push_relabel.id;
-toc
+% tic
+% display('in push relabel algorithm ...')
+% dres_push_relabel   = tracking_push_relabel(dres, c_en, c_ex, c_ij, betta, max_it);
+% dres_push_relabel.r = -dres_push_relabel.id;
+% toc
 
 display('writing the results into a video file ...')
 
@@ -86,6 +86,6 @@ output_vidname  = [cachedir vid_name '_dp_tracked.avi'];
 display(output_vidname)
 
 fnum = max(dres.fr);
-bboxes_tracked = dres2bboxes(dres_push_relabel, fnum);  %% we are visualizing the "DP with NMS in the lop" results. Can be changed to show the results of DP or push relabel algorithm.
+bboxes_tracked = dres2bboxes(dres_dp, fnum);  %% we are visualizing the "DP with NMS in the lop" results. Can be changed to show the results of DP or push relabel algorithm.
 show_bboxes_on_video(input_frames, bboxes_tracked, output_vidname, bws, 4, -inf, output_path);
 
