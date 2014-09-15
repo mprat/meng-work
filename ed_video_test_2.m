@@ -29,7 +29,7 @@ catch
     
     parpool;
     
-    parfor i=1:4;
+    parfor i=1:5;
         display(['frame ' num2str(i)])
         tic;
         image_name = [vid_path imlist(i).name];
