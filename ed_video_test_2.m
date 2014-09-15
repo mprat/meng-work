@@ -12,67 +12,50 @@ vid_path = [datadir vid_name '/'];
 body_tracked_img_dir = [cachedir vid_name '/body_tracked/'];
 mkdir(body_tracked_img_dir);
 
-% stuff from pose
-addpath(genpath('pose-release-ver1.2/'));
-disp('BUFFY model');
-% load and display model
-load('BUFFY_final');
-% TODO: change to only load the models, not see them
-% visualizemodel(model);
-% disp('model template visualization');
-% disp('press any key to continue'); 
-% pause;
-% visualizeskeleton(model);
-% disp('model tree visualization');
-% disp('press any key to continue'); 
-% pause;
 
-imlist=dir([vid_path '/*.png']);
 fname = [cachedir vid_name '_detec_res.mat'];
-bboxes_fname = [cachedir vid_name '_bboxes.mat'];
-num_images_to_process = 4;
+
 try
     load(fname)
 catch
-%     parpool;
+    imlist=dir([vid_path '/*.png']);
+    bboxes_fname = [cachedir vid_name '_bboxes.mat'];
     
-    for i=1:num_images_to_process;
+    addpath(genpath('pose-release-ver1.2/'));
+    
+    disp('Using BUFFY model');
+    load('BUFFY_final');
+    
+    parpool;
+    
+    parfor i=1:4;
         display(['frame ' num2str(i)])
         tic;
-        im = imread([vid_path imlist(i).name]);
-%         clf; imagesc(im); axis image; axis off; drawnow;
+        image_name = [vid_path imlist(i).name];
+        im = imread(image_name);
+        
         boxes = detect(im, model, min(model.thresh,-1));
         boxes = nms(boxes, .1); % nonmaximal suppression
-%         fprintf('detection took %.1f seconds\n',toc);
-        
-        %colorset = {'g','g','y','m','m','m','m','y','y','y','r','r','r','r','y','c','c','c','c','y','y','y','b','b','b','b'};
-        %im = showboxes(im, boxes(1,:),colorset); % show the best detection
-        %f = getframe(gca);
-        %im = frame2im(f);
-        %imwrite(im,[body_tracked_img_dir '/image_body_tracked_' sprintf('%0.8d', i) '.png']);
-        
         bboxes(i).bbox = boxes(1,:);
-
-        % image(im);
-        %showboxes(im, boxes,colorset);  % show all detections
-
         fprintf('detection took %.1f seconds\n',toc);
-        % TODO - save image with lines written on it
-%         disp('press enter to go to next frame');
-%         pause;
+        
+        save_tracked_boxes_on_image(vid_name, imlist(i).name, boxes(1, :)); % save detected bounding boxes to images
     end
     
+    save(bboxes_fname, 'bboxes');
     rmpath(genpath('pose-release-ver1.2/'));
+    
     addpath(genpath('tracking_cvpr11_release_v1.0'));
     dres = bboxes2dres(bboxes);
     dres = build_graph(dres);
     save(fname, 'dres');
-    save(bboxes_fname, 'bboxes');
+    rmpath(genpath('tracking_cvpr11_release_v1.0'));
     
-%     delete(gcp);
+    
+    delete(gcp);
 end
 
-rmpath(genpath('pose-release-ver1.2/'));
+
 addpath(genpath('tracking_cvpr11_release_v1.0'));
 
 %%% setting parameters for tracking
@@ -84,7 +67,6 @@ max_it    = inf;    %% max number of iterations (max number of tracks)
 thr_cost  = 18;     %% max acceptable cost for a track (increase it to have more tracks.)
 
 %%% Running tracking algorithms
-%%% Need to figure out which of these is the "better" one for our purposes
 display('in DP tracking ...')
 tic
 dres_dp       = tracking_dp(dres, c_en, c_ex, c_ij, betta, thr_cost, max_it, 0);
@@ -112,20 +94,4 @@ for i=1:length(bws)                   %% adds some margin to the label images
 end
 show_bboxes_on_video(input_frames, bboxes_tracked, output_vidname, bws, 4, -inf, output_path);
 
-rmpath(genpath('tracking_cvpr11_release_v1.0'));
-
-
-% display all the best-detected bounding boxes into files and save them
-addpath(genpath('pose-release-ver1.2/'));
-load(bboxes_fname);
-for i=1:num_images_to_process
-    im = imread([vid_path imlist(i).name]);
-    clf; imagesc(im); axis image; axis off; drawnow;
-    colorset = {'g','g','y','m','m','m','m','y','y','y','r','r','r','r','y','c','c','c','c','y','y','y','b','b','b','b'};
-    showboxes(im, bboxes(i).bbox,colorset); % show the best detection
-    f = getframe(gca);
-    im = frame2im(f);
-    imwrite(im,[body_tracked_img_dir '/image_body_tracked_' sprintf('%0.8d', i) '.png']);
-end
-rmpath(genpath('pose-release-ver1.2/'));
-        
+rmpath(genpath('tracking_cvpr11_release_v1.0'));        
