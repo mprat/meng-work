@@ -21,12 +21,12 @@ tmp = load('pose-release-ver1.2/code-basic/BUFFY_final.mat');
 model= tmp.model;
 clear tmp
 
-for i=1:length(dirlist)
+parfor i=1:length(dirlist)
   display(['frame ' num2str(i)])
   im = imread([vid_path dirlist(i).name]);
   im = imresize(im,2);                %% double the image size to detect small objects.
   
-  boxes = detect_pose(im, model, thresh);  %% running the detector
+  boxes = detect(im, model, thresh);  %% running the detector
   bbox =  getboxes(model, boxes);
   
   bboxes(i).bbox = nms(bbox, 0.5);    %% running non-max-suppression to suppress overlaping weak detections.

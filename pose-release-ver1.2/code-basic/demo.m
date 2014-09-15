@@ -19,7 +19,7 @@ for i = 1:length(imlist)
 
     % call detect function
     tic;
-    boxes = detect_pose(im, model, min(model.thresh,-1));
+    boxes = detect(im, model, min(model.thresh,-1));
     dettime = toc; % record cpu time
     boxes = nms(boxes, .1); % nonmaximal suppression
     colorset = {'g','g','y','m','m','m','m','y','y','y','r','r','r','r','y','c','c','c','c','y','y','y','b','b','b','b'};
