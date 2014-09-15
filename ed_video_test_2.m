@@ -5,21 +5,22 @@ addpath(genpath('~/Dropbox/MEng/cache/'));
 
 datadir  = '~/Dropbox/MEng/edx-vids/';
 cachedir = '~/Dropbox/MEng/cache/';
-mkdir(cachedir);
 vid_name = 'M-3091X-FA12-L1-3_100-4_secs';
+vid_storage_path = [cachedir vid_name '/'];
+mkdir(vid_storage_path);
 vid_path = [datadir vid_name '/'];
 
-body_tracked_img_dir = [cachedir vid_name '/body_tracked/'];
+body_tracked_img_dir = [vid_storage_path '/body_tracked/'];
 mkdir(body_tracked_img_dir);
 
 
-fname = [cachedir vid_name '_detec_res.mat'];
+fname = [vid_storage_path vid_name '_detec_res.mat'];
 
 try
     load(fname)
 catch
     imlist=dir([vid_path '/*.png']);
-    bboxes_fname = [cachedir vid_name '_bboxes.mat'];
+    bboxes_fname = [vid_storage_path vid_name '_bboxes.mat'];
     
     addpath(genpath('pose-release-ver1.2/'));
     
@@ -39,7 +40,8 @@ catch
         bboxes(i).bbox = boxes(1,:);
         fprintf('detection took %.1f seconds\n',toc);
         
-        save_tracked_boxes_on_image(vid_name, imlist(i).name, boxes(1, :)); % save detected bounding boxes to images
+       
+%         save_tracked_boxes_on_image(vid_name, imlist(i).name, boxes(1, :)); % save detected bounding boxes to images
     end
     
     save(bboxes_fname, 'bboxes');
@@ -74,8 +76,8 @@ dres_dp.r     = -dres_dp.id;
 toc
 
 input_frames    = [datadir vid_name '/image_%0.8d_0.png'];
-output_path     = [cachedir vid_name '_dp_tracked/'];
-output_vidname  = [cachedir vid_name '_dp_tracked.avi'];
+output_path     = [vid_storage_path vid_name '_dp_tracked/'];
+output_vidname  = [vid_storage_path vid_name '_dp_tracked.avi'];
 
 display(output_vidname)
 fnum = max(dres.fr);
