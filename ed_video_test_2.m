@@ -9,52 +9,29 @@ vid_name = 'M-3091X-FA12-L1-3_100-4_secs';
 vid_storage_path = [cachedir vid_name '/'];
 mkdir(vid_storage_path);
 vid_path = [datadir vid_name '/'];
-
 body_tracked_img_dir = [vid_storage_path '/body_tracked/'];
 mkdir(body_tracked_img_dir);
 
 
-fname = [vid_storage_path vid_name '_detec_res.mat'];
+dres_fname = [vid_storage_path vid_name '_detec_res.mat'];
+bboxes_fname = [vid_storage_path vid_name '_bboxes.mat'];
+
+
+imlist=dir([vid_path '/*.png']);
+
+max_imgs = length(imlist); % for ALL, just do length(imlist)
 
 try
-    load(fname)
-catch
-    imlist=dir([vid_path '/*.png']);
-    bboxes_fname = [vid_storage_path vid_name '_bboxes.mat'];
-    
-    addpath(genpath('pose-release-ver1.2/'));
-    
+    load(bboxes_fname)
+    load(dres_fname)
+    addpath(genpath('pose-release-ver1.2'));
     disp('Using BUFFY model');
     load('BUFFY_final');
-    
-    parpool;
-    
-    parfor i=1:5;
-        display(['frame ' num2str(i)])
-        tic;
-        image_name = [vid_path imlist(i).name];
-        im = imread(image_name);
-        
-        boxes = detect(im, model, min(model.thresh,-1));
-        boxes = nms(boxes, .1); % nonmaximal suppression
-        bboxes(i).bbox = boxes(1,:);
-        fprintf('detection took %.1f seconds\n',toc);
-        
-       
-%         save_tracked_boxes_on_image(vid_name, imlist(i).name, boxes(1, :)); % save detected bounding boxes to images
-    end
-    
-    save(bboxes_fname, 'bboxes');
-    rmpath(genpath('pose-release-ver1.2/'));
-    
-    addpath(genpath('tracking_cvpr11_release_v1.0'));
-    dres = bboxes2dres(bboxes);
-    dres = build_graph(dres);
-    save(fname, 'dres');
-    rmpath(genpath('tracking_cvpr11_release_v1.0'));
-    
-    
-    delete(gcp);
+    rmpath(genpath('pose-release-ver1.2'));
+    [bboxes, dres] = find_boxes(vid_name, length(bboxes) + 1, max_imgs, model, bboxes_fname, bboxes, dres_fname);
+catch
+    disp('You have never analyzed this video before');
+    [bboxes, dres] = analyze_frames(vid_name, 1, max_imgs);
 end
 
 
@@ -97,3 +74,6 @@ end
 show_bboxes_on_video(input_frames, bboxes_tracked, output_vidname, bws, 4, -inf, output_path);
 
 rmpath(genpath('tracking_cvpr11_release_v1.0'));        
+
+
+

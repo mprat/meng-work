@@ -1,4 +1,4 @@
-function boxes = detect_pose(im, model, thresh)
+function boxes = detect(im, model, thresh)
 % boxes = detect(im, model, thresh)
 % Detect objects in input using a model and a score threshold.
 % Higher threshold leads to fewer detections.
