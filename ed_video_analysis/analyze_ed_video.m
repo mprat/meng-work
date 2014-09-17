@@ -5,7 +5,7 @@ addpath(genpath('~/Dropbox/MEng/cache/'));
 
 datadir  = '~/Dropbox/MEng/edx-vids/';
 cachedir = '~/Dropbox/MEng/cache/';
-vid_name = 'M-3091X-FA12-L1-3_100-4_secs';
+vid_name = 'M-3091X-FA12-L1-3_100-10_secs';
 vid_storage_path = [cachedir vid_name '/'];
 mkdir(vid_storage_path);
 vid_path = [datadir vid_name '/'];
@@ -19,23 +19,23 @@ bboxes_fname = [vid_storage_path vid_name '_bboxes.mat'];
 
 imlist=dir([vid_path '/*.png']);
 
-max_imgs = length(imlist); % for ALL, just do length(imlist)
+max_imgs = 4; % for ALL, just do length(imlist)
 
 try
-    load(bboxes_fname)
-    load(dres_fname)
-    addpath(genpath('pose-release-ver1.2'));
     disp('Using BUFFY model');
     load('BUFFY_final');
-    rmpath(genpath('pose-release-ver1.2'));
+    load(bboxes_fname)
+    load(dres_fname)
+%     addpath(genpath('pose-release-ver1.2'));
+%     rmpath(genpath('pose-release-ver1.2'));
     [bboxes, dres] = find_boxes(vid_name, length(bboxes) + 1, max_imgs, model, bboxes_fname, bboxes, dres_fname);
 catch
     disp('You have never analyzed this video before');
-    [bboxes, dres] = analyze_frames(vid_name, 1, max_imgs);
+    [bboxes, dres] = find_boxes(vid_name, 1, max_imgs);
 end
 
 
-addpath(genpath('tracking_cvpr11_release_v1.0'));
+% addpath(genpath('tracking_cvpr11_release_v1.0'));
 
 %%% setting parameters for tracking
 c_en      = 10;     %% birth cost

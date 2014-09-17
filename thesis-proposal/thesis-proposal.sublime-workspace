@@ -307,14 +307,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "thesis-proposal.sublime-project",
-			"settings":
-			{
-				"buffer_size": 43,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/LaTeXing/LaTeX (TikZ).sublime-build",
 	"command_palette":
@@ -458,8 +450,14 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/mprat/Documents/repos/meng-work/thesis-proposal"
+	],
 	"file_history":
 	[
+		"/Users/mprat/Documents/repos/meng-work/thesis-proposal/thesis-proposal.sublime-project",
+		"/Users/mprat/Documents/repos/meng-work/thesis-proposal/thesis-proposal.tex",
 		"/home/mprat/.config/zim/dates.list",
 		"/home/mprat/Dropbox/MEng/thesis-proposal/thesis-proposal.tex",
 		"/home/mprat/Dropbox/MEng/thesis-proposal/thesis-proposal.sublime-project",
@@ -585,9 +583,7 @@
 		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/michele_feedback.md",
 		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/pWillieOL.py",
 		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/pWillieBadassOl.py~",
-		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/pWillie.py",
-		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/Done.py",
-		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/projectWillieOompaLoompa.py~"
+		"/home/mprat/Documents/Michele/MEET/y1groupprojs/willie-yl1-2014/pWillie.py"
 	],
 	"find":
 	{
@@ -751,37 +747,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "thesis-proposal.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 43,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								43,
-								43
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -862,6 +829,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
