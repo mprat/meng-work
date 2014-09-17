@@ -22,13 +22,13 @@ end
 im = double(im); % our resize function wants floating point values
 
 for i = 1:interval
-  scaled = resize(im, 1/sc^(i-1));
-  pyra.feat{i} = features(scaled,sbin);
+  scaled = pose_release_v1_2.code_basic.resize(im, 1/sc^(i-1));
+  pyra.feat{i} = pose_release_v1_2.code_basic.features(scaled,sbin);
   pyra.scale(i) = 1/sc^(i-1);
   % remaining interals
   for j = i+interval:interval:max_scale
-    scaled = reduce(scaled);
-    pyra.feat{j} = features(scaled,sbin);
+    scaled = pose_release_v1_2.code_basic.reduce(scaled);
+    pyra.feat{j} = pose_release_v1_2.code_basic.features(scaled,sbin);
     pyra.scale(j) = 0.5 * pyra.scale(j-interval);
   end
 end

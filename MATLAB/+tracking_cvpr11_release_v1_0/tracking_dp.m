@@ -63,7 +63,7 @@ while (min_c < thr_cost) && (it < max_it)
   k = k+length(inds);
   
   if nms_in_loop
-    supp_inds = nms_aggressive(dres, inds, thr_nms);
+    supp_inds = tracking_cvpr11_release_v1_0.nms_aggressive(dres, inds, thr_nms);
     origs = unique(dres.orig(supp_inds));
     redo_nodes = find(ismember(dres.orig, origs));
   else
@@ -80,6 +80,6 @@ end
 inds_all = inds_all(1:k);
 id_s = id_s(1:k);
 
-res = sub(dres, inds_all);
+res = tracking_cvpr11_release_v1_0.sub(dres, inds_all);
 res.id = id_s';
 

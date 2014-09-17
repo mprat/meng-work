@@ -51,12 +51,12 @@ for i = 1:len1
   end
   if ~isempty(bbox)
     inds = find(bbox(:,end) > thr);
-    im1 = show_bbox_on_image(im1, bbox(inds, :), bws, col);
+    im1 = tracking_cvpr11_release_v1_0.show_bbox_on_image(im1, bbox(inds, :), bws, col);
   end
   imwrite(im1, [output_frames sprintf('%0.8d', i) '.jpg']); %%write the output image
 end
 
-frames_to_video(output_frames, video_fname, frame_rate);  %%convert frames to video
+tracking_cvpr11_release_v1_0.frames_to_video(output_frames, video_fname, frame_rate);  %%convert frames to video
 
 if flag1
   unix(['rm -r ' output_frames]); %%remove temporary output folder

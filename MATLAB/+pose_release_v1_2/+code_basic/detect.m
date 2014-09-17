@@ -9,7 +9,7 @@ function boxes = detect(im, model, thresh)
 % Each set of the first 4 columns specify the bounding box for a part
 
 % Compute the feature pyramid and prepare filter
-pyra     = featpyramid(im,model);
+pyra     = pose_release_v1_2.code_basic.featpyramid(im,model);
 interval = model.interval;
 levels   = 1:length(pyra.feat);
 
@@ -29,7 +29,7 @@ for rlevel = levels,
       f     = parts(k).filterid;
       level = rlevel-parts(k).scale*interval;
       if isempty(resp{level}),
-        resp{level} = fconv(pyra.feat{level},filters,1,length(filters));
+        resp{level} = pose_release_v1_2.code_basic.fconv.fconv(pyra.feat{level},filters,1,length(filters));
       end
       for fi = 1:length(f)
         parts(k).score(:,:,fi) = resp{level}{f(fi)};
@@ -126,7 +126,7 @@ function [score,Ix,Iy,Ik] = passmsg(child,parent)
   score0 = repmat(-INF,[Ny Nx K]);
 
   for k = 1:K
-    [score_tmp,Ix_tmp,Iy_tmp] = dt(child.score(:,:,k), child.w(1,k), child.w(2,k), child.w(3,k), child.w(4,k));
+    [score_tmp,Ix_tmp,Iy_tmp] = pose_release_v1_2.code_basic.dt(child.score(:,:,k), child.w(1,k), child.w(2,k), child.w(3,k), child.w(4,k));
     
     % starting points
     startx = child.startx(k);

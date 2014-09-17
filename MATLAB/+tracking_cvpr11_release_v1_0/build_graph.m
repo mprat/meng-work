@@ -11,7 +11,7 @@ for fr = 2:max(dres.fr)
   f1 = find(dres.fr == fr);     %% indices for detections on this frame
   f2 = find(dres.fr == fr-1);   %% indices for detections on the previous frame
   for i = 1:length(f1)
-    ovs1  = calc_overlap(dres, f1(i), dres, f2);   
+    ovs1  = tracking_cvpr11_release_v1_0.calc_overlap(dres, f1(i), dres, f2);   
     inds1 = find(ovs1 > ov_thresh);                       %% find overlapping bounding boxes.  
     
     ratio1 = dres.h(f1(i))./dres.h(f2(inds1));

@@ -1,5 +1,6 @@
 clear;
-restoredefaultpath;
+% restoredefaultpath;
+
 addpath(genpath('~/Dropbox/MEng/edx-vids/'));
 addpath(genpath('~/Dropbox/MEng/cache/'));
 
@@ -31,7 +32,8 @@ try
     [bboxes, dres] = find_boxes(vid_name, length(bboxes) + 1, max_imgs, model, bboxes_fname, bboxes, dres_fname);
 catch
     disp('You have never analyzed this video before');
-    [bboxes, dres] = find_boxes(vid_name, 1, max_imgs);
+    bboxes = {};
+    [bboxes, dres] = find_boxes(vid_name, 1, max_imgs, model, bboxes_fname, bboxes, dres_fname);
 end
 
 
@@ -48,7 +50,7 @@ thr_cost  = 18;     %% max acceptable cost for a track (increase it to have more
 %%% Running tracking algorithms
 display('in DP tracking ...')
 tic
-dres_dp       = tracking_dp(dres, c_en, c_ex, c_ij, betta, thr_cost, max_it, 0);
+dres_dp       = tracking_cvpr11_release_v1_0.tracking_dp(dres, c_en, c_ex, c_ij, betta, thr_cost, max_it, 0);
 dres_dp.r     = -dres_dp.id;
 toc
 
@@ -58,22 +60,22 @@ output_vidname  = [vid_storage_path vid_name '_dp_tracked.avi'];
 
 display(output_vidname)
 fnum = max(dres.fr);
-bboxes_tracked = dres2bboxes(dres_dp, fnum);
+bboxes_tracked = tracking_cvpr11_release_v1_0.dres2bboxes(dres_dp, fnum);
 
 %necessary in macosx for ffmpeg
 %(http://www.mathworks.com/matlabcentral/answers/32062-error-runing-ffmpeg-in-matlab-function-in-linux)
 setenv('PATH', [getenv('PATH') ':/usr/local/bin'])
 
 % load label file
-load('tracking_cvpr11_release_v1.0/data/label_image_file');
+load('label_image_file');
 m=2;
 for i=1:length(bws)                   %% adds some margin to the label images
   [sz1 sz2] = size(bws(i).bw);
   bws(i).bw = [zeros(sz1+2*m,m) [zeros(m,sz2); bws(i).bw; zeros(m,sz2)] zeros(sz1+2*m,m)];
 end
-show_bboxes_on_video(input_frames, bboxes_tracked, output_vidname, bws, 4, -inf, output_path);
+tracking_cvpr11_release_v1_0.show_bboxes_on_video(input_frames, bboxes_tracked, output_vidname, bws, 4, -inf, output_path);
 
-rmpath(genpath('tracking_cvpr11_release_v1.0'));        
+% rmpath(genpath('tracking_cvpr11_release_v1.0'));        
 
 
 
