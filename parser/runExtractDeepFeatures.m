@@ -28,7 +28,7 @@ imageList_small = imageList(1:256,1);
 %% compute the deep features for the images.
 
 disp('start extract deep features');
-featureSet = extractDeepFeature(imageList_small); % the input is image path, the number of images should be no smaller than 256 (you could duplicate one image to 256)
+featureSet = extractDeepFeatures(imageList_small); % the input is image path, the number of images should be no smaller than 256 (you could duplicate one image to 256)
 
 
 %% draw the detected features on each image

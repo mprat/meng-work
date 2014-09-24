@@ -46,7 +46,7 @@ for curBatchID=1:num_batches
     [imBatch] = generateBatch( imageList, curBatchID, batch_size, num_batches, IMAGE_MEAN);    
     scores = caffe('forward', {imBatch});
     response = caffe('get_all_layers');
-    scores = reshape(scores{1}, [nClass batch_size])';
+    % scores = reshape(scores{1}, [nClass batch_size])';
     %scores = reshape(scores{1}, [109 batch_size]);
     featureFC7 = squeeze(response{13})';
     curStartIDX = (curBatchID-1)*batch_size+1;
@@ -56,7 +56,7 @@ for curBatchID=1:num_batches
         curEndIDX = curBatchID*batch_size;
     end
     featureSet(curStartIDX:curEndIDX,:) =  featureFC7(1:curEndIDX-curStartIDX+1,:);
-    scoreSet(curStartIDX:curEndIDX,:) =  scores(1:curEndIDX-curStartIDX+1,:);
+    % scoreSet(curStartIDX:curEndIDX,:) =  scores(1:curEndIDX-curStartIDX+1,:);
     disp([num2str(curBatchID) '/' num2str(num_batches)]);
 end   
 
