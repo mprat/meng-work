@@ -1,4 +1,4 @@
-function featureSet = extractDeepFeature( imageList )
+function [featureSet, scoreSet] = extractDeepFeatures( imageList )
 % extract deep learning features from the trained model
 %   imgList: the absoluate location of images
 % the CNN model

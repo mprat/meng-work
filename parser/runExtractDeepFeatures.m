@@ -1,5 +1,5 @@
-% this loads the SUN categories. I assume this is not needed
-% load('SUN397category.mat');
+% this loads the SUN categories
+load('SUN397category.mat');
 
 %% load images
 % change this depending on where the images are going to live
@@ -28,12 +28,14 @@ imageList_small = imageList(1:256,1);
 %% compute the deep features for the images.
 
 disp('start extract deep features');
-featureSet = extractDeepFeatures(imageList_small); % the input is image path, the number of images should be no smaller than 256 (you could duplicate one image to 256)
+[featureSet, scoreSet] = extractDeepFeatures(imageList_small); % the input is image path, the number of images should be no smaller than 256 (you could duplicate one image to 256)
 
 
 %% draw the detected features on each image
 for i=1:numel(imageList_small)
 	curImg = imread(imageList_small{i});
+    [~,IDX] = sort(scoreSet(i,:),'descend');
+    disp(categories(IDX(1:10)))
 	imshow(curImg)
 	waitforbuttonpress
 end
