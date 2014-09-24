@@ -1,4 +1,4 @@
-function [ featureSet, scoreSet] = extractDeepFeature( imageList )
+function featureSet = extractDeepFeature( imageList )
 % extract deep learning features from the trained model
 %   imgList: the absoluate location of images
 % the CNN model
@@ -20,7 +20,7 @@ end
 caffe('init', model_def_file, model_file);
 caffe('set_mode_cpu');
 caffe('set_phase_test');
-%caffe('set_device',1);
+%caffe('set_device',1); % apparently if you use cpu instead of gpu above, you need to uncomment out this line
 
 d = load('/data/vision/torralba/small-projects/bolei_deep/caffe/ilsvrc_2012_mean.mat');
 IMAGE_MEAN = d.image_mean;
@@ -44,9 +44,9 @@ end
 
 for curBatchID=1:num_batches
     [imBatch] = generateBatch( imageList, curBatchID, batch_size, num_batches, IMAGE_MEAN);    
-    scores = caffe('forward', {imBatch});
+    % scores = caffe('forward', {imBatch});
     response = caffe('get_all_layers');
-    scores = reshape(scores{1}, [nClass batch_size])';
+    % scores = reshape(scores{1}, [nClass batch_size])';
     %scores = reshape(scores{1}, [109 batch_size]);
     featureFC7 = squeeze(response{13})';
     curStartIDX = (curBatchID-1)*batch_size+1;
@@ -56,7 +56,7 @@ for curBatchID=1:num_batches
         curEndIDX = curBatchID*batch_size;
     end
     featureSet(curStartIDX:curEndIDX,:) =  featureFC7(1:curEndIDX-curStartIDX+1,:);
-    scoreSet(curStartIDX:curEndIDX,:) =  scores(1:curEndIDX-curStartIDX+1,:);
+    % scoreSet(curStartIDX:curEndIDX,:) =  scores(1:curEndIDX-curStartIDX+1,:);
     disp([num2str(curBatchID) '/' num2str(num_batches)]);
 end   
 
