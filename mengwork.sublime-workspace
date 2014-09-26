@@ -307,21 +307,17 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "MATLAB/+utils/split_all_in_dir.m",
-			"settings":
-			{
-				"buffer_size": 115,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"command_palette":
 	{
-		"height": 87.0,
+		"height": 267.0,
 		"selected_items":
 		[
+			[
+				"mat",
+				"Set Syntax: MATLAB"
+			],
 			[
 				"matla",
 				"Set Syntax: MATLAB"
@@ -494,10 +490,14 @@
 	[
 		"/afs/csail.mit.edu/u/m/mprat/meng-work",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils"
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser"
 	],
 	"file_history":
 	[
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/split_all_in_dir.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames_test.m",
 		"/Users/mprat/Documents/repos/6867-homework1/python/homework1.py",
 		"/Users/mprat/Documents/repos/6867-homework1/MATLAB/validateData.m",
 		"/Users/mprat/Dropbox/Resumes/resume_complete.tex",
@@ -622,10 +622,7 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-list-less-than-10.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-character-input-solutions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-odd-or-even.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-character-input.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-30-list-ends-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/output.html",
-		"/home/mprat/Documents/Michele/Repos/kivy_test_app/README.md"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-character-input.md"
 	],
 	"find":
 	{
@@ -789,37 +786,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "MATLAB/+utils/split_all_in_dir.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 115,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								115,
-								115
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Matlab/Matlab.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
