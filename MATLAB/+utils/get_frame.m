@@ -5,6 +5,6 @@ function get_frame(vid_name, vid_dir, second)
     addpath(genpath(frames_dir_name));
 
     % using ffmpeg
-    out_file_name = sprintf('image_%08d.png', second)
+    out_file_name = sprintf('image_%08d.png', second);
     system(['ffmpeg -ss ' num2str(second) ' -i ' vid_dir '/' vid_name ' -frames:v 1 ' frames_dir_name '/' out_file_name]);
 end
