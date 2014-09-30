@@ -307,17 +307,21 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/path_setup.sh",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"command_palette":
 	{
-		"height": 267.0,
+		"height": 87.0,
 		"selected_items":
 		[
-			[
-				"mat",
-				"Set Syntax: MATLAB"
-			],
 			[
 				"matla",
 				"Set Syntax: MATLAB"
@@ -488,16 +492,11 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/meng-work",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser"
+		"/afs/csail.mit.edu/u/m/mprat/meng-work"
 	],
 	"file_history":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/split_all_in_dir.m",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames_test.m",
 		"/Users/mprat/Documents/repos/6867-homework1/python/homework1.py",
 		"/Users/mprat/Documents/repos/6867-homework1/MATLAB/validateData.m",
 		"/Users/mprat/Dropbox/Resumes/resume_complete.tex",
@@ -622,7 +621,9 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-list-less-than-10.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-character-input-solutions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-odd-or-even.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-character-input.md"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-character-input.md",
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-30-list-ends-solutions.md",
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/output.html"
 	],
 	"find":
 	{
@@ -786,8 +787,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/path_setup.sh",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -830,7 +860,7 @@
 	{
 		"height": 0.0
 	},
-	"project": "mengwork.sublime-project",
+	"project": "meng-work.sublime-project",
 	"replace":
 	{
 		"height": 46.0
