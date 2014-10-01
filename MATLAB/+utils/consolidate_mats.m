@@ -1,0 +1,11 @@
+final_mat = {};
+load('vids_to_download/vid_names_and_frames_9_30.mat');
+final_mat.frame_nums = frame_nums;
+final_mat.vid_names = vid_names;
+load('vids_to_download/vid_names_and_frames_9_30-2.mat');
+final_mat.frame_nums = cat(2, final_mat.frame_nums, frame_nums);
+final_mat.vid_names = [final_mat.vid_names, vid_names];
+load('vids_to_download/vid_names_and_frames_9_30-3.mat');
+final_mat.frame_nums = cat(2, final_mat.frame_nums, frame_nums);
+final_mat.vid_names = [final_mat.vid_names, vid_names];
+save('vids_to_download/vid_names_and_frames_9_30_all.mat', 'final_mat'); 
