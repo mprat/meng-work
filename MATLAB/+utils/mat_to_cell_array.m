@@ -11,7 +11,7 @@ function final_image_paths = mat_to_cell_array(filename)
         frame_num = final_mat.frame_nums(i);
         frames_dir_name = strcat(vid_dir, '/', strtok(vid_name, '.'));
         out_file_name = sprintf('image_%08d.png', frame_num);
-        final_name = strcat(frames_dir_name, out_file_name);
+        final_name = strcat(frames_dir_name, '/', out_file_name);
         final_image_paths(i) = cellstr(final_name);
     end
 end

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"list_",
+				"list_trans"
+			],
+			[
 				"item",
 				"begin{enumerate}\\item	latex-document"
 			],
@@ -308,10 +312,26 @@
 	"buffers":
 	[
 		{
-			"file": "/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/path_setup.sh",
+			"file": "python/vids_csv_to_matlab.py",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 538,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "MATLAB/parser/features_from_list_of_image_paths.m",
+			"settings":
+			{
+				"buffer_size": 695,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "MATLAB/+utils/mat_to_cell_array.m",
+			"settings":
+			{
+				"buffer_size": 678,
 				"line_ending": "Unix"
 			}
 		}
@@ -319,9 +339,13 @@
 	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
 	"command_palette":
 	{
-		"height": 87.0,
+		"height": 267.0,
 		"selected_items":
 		[
+			[
+				"mat",
+				"Set Syntax: MATLAB"
+			],
 			[
 				"matla",
 				"Set Syntax: MATLAB"
@@ -492,10 +516,26 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/meng-work"
+		"/afs/csail.mit.edu/u/m/mprat/meng-work",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser"
 	],
 	"file_history":
 	[
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/get_frame.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/frame_at_seconds_from_vids.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/get_all_frames_from_csv.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/pair_research_classification_prep.sh",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames_test.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/startup.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+pose_release_v1_2/COPYING",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/calc_overlap.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/+3rd_party/voc-release3.1/color.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/README.md",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/default_workspace_vars_reference.mat",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/split_all_in_dir.m",
 		"/Users/mprat/Documents/repos/6867-homework1/python/homework1.py",
 		"/Users/mprat/Documents/repos/6867-homework1/MATLAB/validateData.m",
@@ -611,19 +651,7 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-check-primality-functions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-list-overlap-comprehensions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-02-guessing-game-1.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-rock-paper-scissors.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-list-comprehensions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-12-string-lists.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-05-list-overlap.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-05-divisors-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-26-list-less-than-10-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-26-divisors.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-list-less-than-10.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-character-input-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-odd-or-even.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-character-input.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-30-list-ends-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/output.html"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-rock-paper-scissors.md"
 	],
 	"find":
 	{
@@ -792,30 +820,94 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/path_setup.sh",
-					"semi_transient": true,
+					"file": "python/vids_csv_to_matlab.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 538,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								170,
+								170
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "MATLAB/parser/features_from_list_of_image_paths.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								247,
+								247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Matlab/Matlab.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "MATLAB/+utils/mat_to_cell_array.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								599,
+								599
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Objective-C/Objective-C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -838,6 +930,12 @@
 				0,
 				1,
 				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
 			]
 		],
 		"cols":
@@ -848,6 +946,7 @@
 		"rows":
 		[
 			0.0,
+			0.5,
 			1.0
 		]
 	},
