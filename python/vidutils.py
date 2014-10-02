@@ -25,7 +25,7 @@ def download_video(youtubeURL):
 if __name__=="__main__":
 	max_frame = 257 # get us 256 frames
 	vid_dir = '../../ed-vids'
-	youtubeURL = 'https://www.youtube.com/watch?v=aTuYZqhEvuk'
+	youtubeURL = 'https://www.youtube.com/watch?v=8su-otIh2gA'
 	vid_id = youtubeURL[-11:]
 
 	download_video(youtubeURL)

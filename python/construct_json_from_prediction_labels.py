@@ -4,7 +4,7 @@
 
 import scipy
 from scipy import io
-vid_name = "ID-aTuYZqhEvuk"
+vid_name = "ID-8su-otIh2gA"
 label_mat = scipy.io.loadmat('../MATLAB/parser/256-from-' + vid_name + '-predicted-labels.mat', squeeze_me=True)
 labels = label_mat['predicted_label_text']
 

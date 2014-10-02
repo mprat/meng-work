@@ -1,6 +1,6 @@
 % get list of filenames
 
-vid_name = 'ID-aTuYZqhEvuk';
+vid_name = 'ID-8su-otIh2gA';
 max_framenum = 256;
 
 list_of_filenames = {max_framenum, 1};

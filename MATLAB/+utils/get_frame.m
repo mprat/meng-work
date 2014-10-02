@@ -8,5 +8,3 @@ function get_frame(vid_name, vid_dir, second)
     out_file_name = sprintf('image_%08d.png', second)
     system(['ffmpeg -ss ' num2str(second) ' -i ' vid_dir '/' vid_name ' -frames:v 1 ' frames_dir_name '/' out_file_name]);
 end
-
-% utils.get_frame(char(vid_names(2)), vid_dir, frame_nums(2))

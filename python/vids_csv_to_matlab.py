@@ -3,7 +3,7 @@ import scipy
 from scipy import io
 import numpy
 
-reader = csv.reader(open('../vids_to_download/ids_and_frames_10_2.csv', 'rb'),delimiter=',')
+reader = csv.reader(open('../vids_to_download/ids_and_frames_training-set-9-30.csv', 'rb'),delimiter=',')
 x = list(reader)
 
 files_list = []
@@ -25,4 +25,4 @@ for i in range(4, len(x)):
 
 files_list = numpy.array(files_list, dtype=numpy.object)
 index_list = numpy.array(index_list, dtype=numpy.int16)
-scipy.io.savemat('../vids_to_download/vid_names_and_frames_and_labels_10_2.mat', mdict={'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list})
+scipy.io.savemat('../vids_to_download/vid_names_and_frames_and_labels-training-set-9-30.mat', mdict={'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list})
