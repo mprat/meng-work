@@ -2,7 +2,12 @@
 # as a temporary, can make that import happen from MATLAB using scipy.io 
 # need to figure out where the conversion to labels string-wise happens
 
-labels = ['head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides']
+import scipy
+from scipy import io
+label_mat = scipy.io.loadmat('../MATLAB/parser/256-from-ID-EMaTF9-ArJY-predicted-labels.mat', squeeze_me=True)
+labels = label_mat['predicted_label_text']
+
+# labels = ['head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides']
 
 # convert this list into a dictionary
 
@@ -10,7 +15,7 @@ import json
 
 
 segment_list = []
-transition_pos = []
+transition_pos = [0]
 
 prev_label = labels[0]
 section_dict = {"start-time": 0, "end-time": 0, "style": prev_label}
