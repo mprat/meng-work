@@ -4,7 +4,8 @@
 
 import scipy
 from scipy import io
-label_mat = scipy.io.loadmat('../MATLAB/parser/256-from-ID-EMaTF9-ArJY-predicted-labels.mat', squeeze_me=True)
+vid_name = "ID-aTuYZqhEvuk"
+label_mat = scipy.io.loadmat('../MATLAB/parser/256-from-' + vid_name + '-predicted-labels.mat', squeeze_me=True)
 labels = label_mat['predicted_label_text']
 
 # labels = ['head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides']

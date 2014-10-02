@@ -1,7 +1,8 @@
 load('model-288-training-samples.mat');
 
-% need very much to make sure you change the names of the predictor arguments and the like.
-load('256-from-ID-EMaTF9-ArJY.mat');
+% load('256-from-ID-EMaTF9-ArJY.mat');
+
+
 features = featureSet;
 l = zeros(256, 1);
 
