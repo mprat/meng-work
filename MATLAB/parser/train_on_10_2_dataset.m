@@ -33,8 +33,8 @@ final_image_paths(ix) = final_image_paths(1);
 
 % final_image_paths = repmat()
 
-load('44-features-training-set-9-30.mat');
-% features = features_from_list_of_image_paths(final_image_paths', '44-features-training-set-9-30.mat');
+% load('44-features-training-set-9-30.mat');
+features = features_from_list_of_image_paths(final_image_paths', '44-features-training-set-9-30.mat');
 
 % scale features
 f_scaled = zeros(256, 4096);

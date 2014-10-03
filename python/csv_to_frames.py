@@ -2,6 +2,7 @@ import csv
 import scipy
 from scipy import io
 import numpy
+import vidutils
 
 reader = csv.reader(open('../vids_to_download/ids_and_frames_training-10-2.csv', 'rb'),delimiter=',')
 x = list(reader)

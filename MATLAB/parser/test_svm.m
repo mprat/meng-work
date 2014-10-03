@@ -1,6 +1,6 @@
 % load('model-288-training-samples.mat');
 load('256-from-ID-EMaTF9-ArJY.mat');
-load('model-heads-vs-no-heads-22-each-training-9-30-samples.mat')
+load('model-heads-vs-no-heads-22-each-scaled-training-9-30-samples.mat')
 
 
 features = featureSet;
