@@ -1,7 +1,6 @@
 function [final_image_paths, labels] = mat_to_cell_array(filename)
     % frame_num and vid_name come from .mat file
     load(filename);
-    % load('../vids_to_download/vid_names_and_frames_9_30_all.mat');
     vid_dir = '~/ed-vids';
 
     final_image_paths = cell(1, length(frame_nums));

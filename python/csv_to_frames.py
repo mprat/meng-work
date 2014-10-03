@@ -1,34 +1,28 @@
-import csv
-import scipy
-from scipy import io
-import numpy
 import vidutils
+import numpy as np
+import os.path
 
-reader = csv.reader(open('../vids_to_download/ids_and_frames_training-10-2.csv', 'rb'),delimiter=',')
-x = list(reader)
+list_dict = vidutils.csv_ids_frames_labels_to_mat('../vids_to_download/ids_and_frames_training-set-10-2.csv', '../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat')
 
-files_list = []
-index_list = []
-label_list = []
-for i in range(5, 28):
-    files_list.append(x[i][0])
-    index_list.append(x[i][2])
-    label_list.append(x[i][4])
-    files_list.append(x[i][0])
-    index_list.append(x[i][5])
-    label_list.append(x[i][7])
-    files_list.append(x[i][0])
-    index_list.append(x[i][8])
-    label_list.append(x[i][10])
-    files_list.append(x[i][0])
-    index_list.append(x[i][11])
-    label_list.append(x[i][13])
-    files_list.append(x[i][0])
-    index_list.append(x[i][14])
-    label_list.append(x[i][16])
+filenames = list_dict['vid_names']
+frames = list_dict['frame_nums']
 
-files_list = numpy.array(files_list, dtype=numpy.object)
-index_list = numpy.array(index_list, dtype=numpy.int16)
-label_list = numpy.array(label_list, dtype=numpy.object)
+vid_dir = '../../ed-vids'
+filename_index_list = range(len(filenames))
 
-scipy.io.savemat('../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat', mdict={'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list})
+for i in filename_index_list:
+	# download video if it does not exist already
+	if not os.path.isfile(vid_dir + '/' + filenames[i] + '.mp4'):
+		vidutils.download_video_id(filenames[i][3:]) # get rid of the "ID-" from the name. In the future, do this step in parallel to the matrix saving so that nothing gets messed up
+	# get indices where that same video appears for a frame
+	list_of_corresp_indices = np.where(filenames == filenames[i])[0]
+	# get the list of frames corresponding to the video in question
+	frames_sublist = frames[list_of_corresp_indices]
+	# get those frames that don't exist already
+	for frame in frames_sublist:
+		vidutils.get_frame(filenames[i], vid_dir, frame)
+	# delete video
+	vidutils.delete_video(filenames[i] + '.mp4', vid_dir)
+	# remove list_of_corresp_indices from filename_index_list
+	for index in list_of_corresp_indices:
+		filename_index_list.remove(index)

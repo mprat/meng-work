@@ -7,45 +7,56 @@
 
 import subprocess
 import os
+import os.path
 import csv
 import scipy
 from scipy import io
 import numpy
 
 def get_frame(vid_name, vid_dir, frame_num):
+	frames_dir_name = vid_dir + '/' + vid_name
 	os.system('mkdir ' + frames_dir_name)
-	out_file_name = 'image_{:08d}.png'.format(i)
-	o = 'ffmpeg -ss ' + str(i) + ' -i ' + vid_dir + '/' + vid_name + ' -frames:v 1 ' + frames_dir_name + '/' + out_file_name
-	# print o
-	os.system(o)
+	out_file_name = 'image_{:08d}.png'.format(frame_num)
+	print "desired output file = ", out_file_name 
+	if not os.path.isfile(frames_dir_name + '/' + out_file_name):
+		print "getting the frame"
+		o = 'ffmpeg -ss ' + str(frame_num) + ' -i ' + vid_dir + '/' + vid_name + '.mp4 -frames:v 1 ' + frames_dir_name + '/' + out_file_name
+		# print o
+		os.system(o)
 
-def download_video(youtubeURL):
+def download_video_url(youtubeURL):
 	o = 'youtube-dl -o "../../ed-vids/ID-%(id)s.%(ext)s" ' + youtubeURL
 	# print o
 	os.system(o)
 
+def download_video_id(youtubeID):
+	download_video_url('https://www.youtube.com/watch?v=' + youtubeID)
+
+def delete_video(vid_name, vid_dir):
+	os.system('rm ' + vid_dir + '/' + vid_name)
+
 def csv_ids_frames_labels_to_mat(csv_name, matlab_name):
 	# reader = csv.reader(open('../vids_to_download/ids_and_frames_training-10-2.csv', 'rb'),delimiter=',')
-	reader = csv.reader(open(csv_name, 'rb'),delimimter=',')
+	reader = csv.reader(open(csv_name, 'rb'),delimiter=',')
 	x = list(reader)
 
 	files_list = []
 	index_list = []
 	label_list = []
 	for i in range(5, 28):
-	    files_list.append(x[i][0])
+	    files_list.append('ID-' + x[i][0])
 	    index_list.append(x[i][2])
 	    label_list.append(x[i][4])
-	    files_list.append(x[i][0])
+	    files_list.append('ID-' + x[i][0])
 	    index_list.append(x[i][5])
 	    label_list.append(x[i][7])
-	    files_list.append(x[i][0])
+	    files_list.append('ID-' + x[i][0])
 	    index_list.append(x[i][8])
 	    label_list.append(x[i][10])
-	    files_list.append(x[i][0])
+	    files_list.append('ID-' + x[i][0])
 	    index_list.append(x[i][11])
 	    label_list.append(x[i][13])
-	    files_list.append(x[i][0])
+	    files_list.append('ID-' + x[i][0])
 	    index_list.append(x[i][14])
 	    label_list.append(x[i][16])
 
@@ -53,8 +64,10 @@ def csv_ids_frames_labels_to_mat(csv_name, matlab_name):
 	index_list = numpy.array(index_list, dtype=numpy.int16)
 	label_list = numpy.array(label_list, dtype=numpy.object)
 
-	scipy.io.savemat(matlab_name, mdict={'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list})
+	list_dict = {'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list}
+	scipy.io.savemat(matlab_name, mdict=list_dict)
 	# scipy.io.savemat('../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat', mdict={'vid_names': files_list, 'frame_nums': index_list, 'labels': label_list})
+	return list_dict
 
 # TODO: write get_frames_from_vid_list_and_frame_list
 
@@ -64,7 +77,7 @@ if __name__=="__main__":
 	# youtubeURL = 'https://www.youtube.com/watch?v=8su-otIh2gA'
 	# vid_id = youtubeURL[-11:]
 
-	# download_video(youtubeURL)
+	# download_video_url(youtubeURL)
 	# # missing one step here where you get the name of the video
 
 	# vid_name = 'ID-' + vid_id + '.mp4'
@@ -74,5 +87,5 @@ if __name__=="__main__":
 	# for i in range(1, max_frame):
 	# 	get_frame(vid_name, vid_dir, i)
 
-	csv_ids_frames_labels_to_mat('../vids_to_download/ids_and_frames_training-10-2.csv', '../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat')
+	csv_ids_frames_labels_to_mat('../vids_to_download/ids_and_frames_training-set-10-2.csv', '../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat')
 

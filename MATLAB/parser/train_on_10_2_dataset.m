@@ -1,40 +1,39 @@
-[image_paths, labels] = utils.mat_to_cell_array('../../vids_to_download/vid_names_and_frames_and_labels-training-set-9-30.mat');
+[image_paths, labels] = utils.mat_to_cell_array('../../vids_to_download/vid_names_and_frames_and_labels-training-set-10-2.mat');
 
-% change all '3' labels to '2' (effectively make this dataset 'head' and 'not head')
-
-labels = str2num(labels);
-labels(labels==3) = 2;
+labels = str2double(labels);
+% labels(labels==3) = 2; % turns all 3 labels (lecture) into 2, which then means it becomes head vs not head
 
 % only select 22 of 1 and 22 of 2
-num_each = 22;
-final_image_paths = cell(256, 1);
-final_labels = zeros(44, 1);
+% num_each = 22;
+% final_image_paths = cell(256, 1);
+% final_labels = zeros(44, 1);
+% one_count = 0;
+% two_count = 0;
+% index = 1;
+% for i=1:length(labels)
+% 	if labels(iimage_pa) == 1 & one_count < num_each
+% 		final_image_paths(index) = image_paths(i);
+% 		final_labels(index) = labels(i);
+% 		index = index + 1;
+% 		one_count = one_count + 1;
+% 	elseif labels(i) == 2 & two_count < num_each
+% 		final_image_paths(index) = image_paths(i);
+% 		final_labels(index) = labels(i);
+% 		index = index + 1;
+% 		two_count = two_count + 1;
+% 	end
+% end
 
-one_count = 0;
-two_count = 0;
-index = 1;
-
-for i=1:length(labels)
-	if labels(i) == 1 & one_count < num_each
-		final_image_paths(index) = image_paths(i);
-		final_labels(index) = labels(i);
-		index = index + 1;
-		one_count = one_count + 1;
-	elseif labels(i) == 2 & two_count < num_each
-		final_image_paths(index) = image_paths(i);
-		final_labels(index) = labels(i);
-		index = index + 1;
-		two_count = two_count + 1;
-	end
-end
-
-ix = cellfun('isempty', final_image_paths);
-final_image_paths(ix) = final_image_paths(1);
+% ix = cellfun('isempty', final_image_paths);
+% final_image_paths(ix) = final_image_paths(1);
 
 % final_image_paths = repmat()
 
+image_paths_to_get_features = repmat(image_paths, 1, 2); % need at least 256 images to get features
+image_paths_to_get_features = image_paths_to_get_features';
 % load('44-features-training-set-9-30.mat');
-features = features_from_list_of_image_paths(final_image_paths', '44-features-training-set-9-30.mat');
+
+features = features_from_list_of_image_paths(image_paths_to_get_features, 'training-set-10-2.mat');
 
 % scale features
 f_scaled = zeros(256, 4096);
