@@ -13,9 +13,9 @@ vid_dir = '../../ed-vids'
 # can either specify a command-line argument or type the name / ID of a video here
 if not args.url:
 	vid_name = 'ID-EMaTF9-ArJY'
-	vid_url = "http://youtube.com/watch?v=" + vid_name[3:]
+	vid_url = "http://www.youtube.com/watch?v=" + vid_name[3:]
 else:
-	vid_name = 'ID-' + args.url[32:]
+	vid_name = 'ID-' + args.url[31:] #if there is a www, the part right after the=
 	vid_url = args.url
 
 # download video
