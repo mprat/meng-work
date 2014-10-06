@@ -5,34 +5,46 @@ import csv
 import scipy
 from scipy import io
 import numpy
+import re
 
+# vid_name DOES NOT HAVE the .mp4 in it
+# vid_dir is the directory where the videos / frames are stored
+# frame_num is the 1-indexed frame number
 def get_frame(vid_name, vid_dir, frame_num):
 	frames_dir_name = vid_dir + '/' + vid_name
 	if not os.path.isdir(frames_dir_name):
 		os.system('mkdir ' + frames_dir_name)
 	out_file_name = 'image_{:08d}.png'.format(frame_num)
-	print "desired output file = ", out_file_name 
+	# print "desired output file = ", out_file_name 
 	if not os.path.isfile(frames_dir_name + '/' + out_file_name):
 		# Get the video using the video ID, not the name
 		download_video_id(vid_name[3:])
-		print "getting the frame"
-		o = 'ffmpeg -ss ' + str(frame_num) + ' -i ' + vid_dir + '/' + vid_name + '.mp4 -frames:v 1 ' + frames_dir_name + '/' + out_file_name
+		# print "getting the frame"
+		o = 'ffmpeg -loglevel quiet -ss ' + str(frame_num) + ' -i ' + vid_dir + '/' + vid_name + '.mp4 -frames:v 1 ' + frames_dir_name + '/' + out_file_name
 		# print o
 		os.system(o)
 
+# give the full youtube URL to download the video from
 def download_video_url(youtubeURL):
 	if not os.path.isfile('../../ed-vids/ID-' + youtubeURL[32:] + '.mp4'):
-		o = 'youtube-dl -o "../../ed-vids/ID-%(id)s.%(ext)s" ' + youtubeURL
+		o = 'youtube-dl -q -o "../../ed-vids/ID-%(id)s.%(ext)s" ' + youtubeURL
 		# print o
 		os.system(o)
-	else:
-		print "File already exists"
+	# else:
+		# print "File already exists"
 
+# youtubeID is the 11-character string that is the youtube ID
 def download_video_id(youtubeID):
 	download_video_url('https://www.youtube.com/watch?v=' + youtubeID)
 
+# vid_name here includes .mp4 / extension
+# TODO: check whether it includes .mp4 or not
 def delete_video(vid_name, vid_dir):
 	os.system('rm ' + vid_dir + '/' + vid_name)
+
+def get_video_length_secs(vid_name):
+	probe = subprocess.check_output(["ffprobe", "-v", "quiet",  "-show_format",  "../../ed-vids/" + vid_name + ".mp4"])
+	return int(float(re.search("duration=\d+.?\d+", probe).group(0)[9:]))
 
 def csv_ids_frames_labels_to_mat(csv_name, matlab_name):
 	# reader = csv.reader(open('../vids_to_download/ids_and_frames_training-10-2.csv', 'rb'),delimiter=',')

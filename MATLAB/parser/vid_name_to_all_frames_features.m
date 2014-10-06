@@ -13,10 +13,10 @@ list_trans = list_of_filenames';
 disp('start extract deep features');
 [featureSet, scoreSet] = extractDeepFeatures(list_trans); % the input is image path, the number of images should be no smaller than 256 (you could duplicate one image to 256)
 
-save(sprintf('256-from-%s.mat', vid_name), 'featureSet');
+save(sprintf('%d-from-%s.mat', max_framenum, vid_name), 'featureSet');
 
 % use svm predict
-load('model-288-training-samples.mat');
+% load('model-288-training-samples.mat');
 load(sprintf('256-from-%s.mat', vid_name));
 
 
