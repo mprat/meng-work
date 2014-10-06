@@ -4,19 +4,26 @@ import argparse
 import sys
 
 parser = argparse.ArgumentParser(description='Break the given YouTube video into frames for later processing.')
-parser.add_argument('--url', metavar="youtubeURL", type=str)
+parser.add_argument('--id', metavar="videoID", type=str)
+parser.add_argument('--url', metavar="videoURL", type=str)
 # parser.add_argument('--ID', dest="id_given", const=True, default=False, help="Use this flag if you just want to use the youtube video ID.")
 
 args = parser.parse_args()
 vid_dir = '../../ed-vids'
 
 # can either specify a command-line argument or type the name / ID of a video here
-if not args.url:
+if not args.url and not args.id:
 	vid_name = 'ID-EMaTF9-ArJY'
 	vid_url = "http://www.youtube.com/watch?v=" + vid_name[3:]
-else:
+elif args.url:
 	vid_name = 'ID-' + args.url[31:] #if there is a www, the part right after the=
 	vid_url = args.url
+elif args.id:
+	vid_name = 'ID-' + args.id
+	vid_url = "http://www.youtube.com/watch?v=" + args.id
+else: 
+	print "Something horrible happened."
+	sys.exit(0)
 
 # download video
 vidutils.download_video_url(vid_url)

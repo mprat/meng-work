@@ -21,9 +21,9 @@ args = parser.parse_args()
 if not args.id and not args.url:
 	vid_name = "ID-EMaTF9-ArJY"
 	vid_url = "http://www.youtube.com/watch?v=" + vid_name[3:]
-else if args.url:
+elif args.url:
 	vid_name = "ID-" + args.url[31:] #if there is a www (if there is NO www, then should be 27)
-else if args.id:
+elif args.id:
 	vid_name = args.id
 else:
 	print "Something horrible happened."
