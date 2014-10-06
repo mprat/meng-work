@@ -1,10 +1,3 @@
-# function get_frame(vid_name, vid_dir, second)
-# 	frames_dir_name = [vid_dir '/' strtok(vid_name, '.')]
-
-#     out_file_name = sprintf('image_%08d.png', second)
-#     system(['ffmpeg -ss ' num2str(second) ' -i ' vid_dir '/' vid_name ' -frames:v 1 ' frames_dir_name '/' out_file_name]);
-# end
-
 import subprocess
 import os
 import os.path
@@ -15,19 +8,25 @@ import numpy
 
 def get_frame(vid_name, vid_dir, frame_num):
 	frames_dir_name = vid_dir + '/' + vid_name
-	os.system('mkdir ' + frames_dir_name)
+	if not os.path.isdir(frames_dir_name):
+		os.system('mkdir ' + frames_dir_name)
 	out_file_name = 'image_{:08d}.png'.format(frame_num)
 	print "desired output file = ", out_file_name 
 	if not os.path.isfile(frames_dir_name + '/' + out_file_name):
+		# Get the video using the video ID, not the name
+		download_video_id(vid_name[3:])
 		print "getting the frame"
 		o = 'ffmpeg -ss ' + str(frame_num) + ' -i ' + vid_dir + '/' + vid_name + '.mp4 -frames:v 1 ' + frames_dir_name + '/' + out_file_name
 		# print o
 		os.system(o)
 
 def download_video_url(youtubeURL):
-	o = 'youtube-dl -o "../../ed-vids/ID-%(id)s.%(ext)s" ' + youtubeURL
-	# print o
-	os.system(o)
+	if not os.path.isfile('../../ed-vids/ID-' + youtubeURL[32:] + '.mp4'):
+		o = 'youtube-dl -o "../../ed-vids/ID-%(id)s.%(ext)s" ' + youtubeURL
+		# print o
+		os.system(o)
+	else:
+		print "File already exists"
 
 def download_video_id(youtubeID):
 	download_video_url('https://www.youtube.com/watch?v=' + youtubeID)
