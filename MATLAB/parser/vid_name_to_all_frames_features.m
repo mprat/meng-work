@@ -1,7 +1,7 @@
 % get list of filenames
 
-vid_name = 'ID-8su-otIh2gA';
-max_framenum = 256;
+vid_name = 'ID-EMaTF9-ArJY';
+max_framenum = length(dir(['~/ed-vids/' vid_name '/image*.png'])); % only count the .png files
 
 list_of_filenames = {max_framenum, 1};
 for i=1:max_framenum
@@ -16,14 +16,14 @@ disp('start extract deep features');
 save(sprintf('%d-from-%s.mat', max_framenum, vid_name), 'featureSet');
 
 % use svm predict
-% load('model-288-training-samples.mat');
-load(sprintf('256-from-%s.mat', vid_name));
+load('model-3-class-all-training-10-2-samples.mat');
+load(sprintf('%d-from-%s.mat', max_framenum, vid_name));
 
 
 features = featureSet;
 l = zeros(max_framenum, 1);
 
-[predicted_label_num, accuracy, decision_values] = libsvm.svmpredict(l, features, model)
+[predicted_label_num, accuracy, decision_values] = libsvm.svmpredict(l, features, model);
 
 predicted_label_text = cell(length(predicted_label_num), 1);
 
@@ -33,4 +33,4 @@ for i=1:length(predicted_label_num)
 	predicted_label_text(i) = idx_to_label(predicted_label_num(i));
 end
 
-save(sprintf('256-from-%s-predicted-labels.mat', vid_name), 'predicted_label_text', 'predicted_label_num');
+save(sprintf('%d-from-%s-predicted-labels.mat', max_framenum, vid_name), 'predicted_label_text', 'predicted_label_num');

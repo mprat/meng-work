@@ -4,8 +4,15 @@
 
 import scipy
 from scipy import io
-vid_name = "ID-8su-otIh2gA"
-label_mat = scipy.io.loadmat('../MATLAB/parser/256-from-' + vid_name + '-predicted-labels.mat', squeeze_me=True)
+import os
+import os.path
+import re
+
+vid_name = "ID-EMaTF9-ArJY"
+d = "../../ed-vids/" + vid_name
+# get number of files the directory by making sure the filenames match the image_NUMBER.png pattern
+num_frames = len([name for name in os.listdir(d) if os.path.isfile(os.path.join(d, name)) and re.match("image_\d+\.png", name)])
+label_mat = scipy.io.loadmat('../MATLAB/parser/' + str(num_frames) + '-from-' + vid_name + '-predicted-labels.mat', squeeze_me=True)
 labels = label_mat['predicted_label_text']
 
 # labels = ['head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'head', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides', 'slides']
@@ -39,4 +46,9 @@ segment_list.append(section_dict)
 
 
 final_dict = {"segments": segment_list, "slide-transitions": transition_pos}
+
+with open('../../ed-vids/jsons/' + vid_name + '/' + vid_name + '.json', 'w') as outfile:
+	json.dump(final_dict, outfile)
+
+# print to the screen for debugging
 print json.dumps(final_dict, indent=4)
