@@ -33,5 +33,5 @@ function vid_name_to_all_frames_features(vid_name)
 		predicted_label_text(i) = idx_to_label(predicted_label_num(i));
 	end
 
-	save(sprintf('%d-from-%s-predicted-labels.mat', max_framenum, vid_name), 'predicted_label_text', 'predicted_label_num');
+	save(sprintf('%d-from-%s-predicted-labels.mat', max_framenum, vid_name), 'predicted_label_text', 'predicted_label_num', 'list_of_filenames');
 end

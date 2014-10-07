@@ -10,6 +10,6 @@ function startup(loc)
 	end
 
 	addpath([path_of_repo 'MATLAB/']);
-	addpath([path_of_repo '../libsvm']);
+	addpath(genpath([path_of_repo '../libsvm']));
 	cd(path_of_repo);
 end
