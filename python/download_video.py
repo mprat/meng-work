@@ -16,7 +16,7 @@ if not args.url and not args.id:
 	vid_name = 'ID-EMaTF9-ArJY'
 	vid_url = "http://www.youtube.com/watch?v=" + vid_name[3:]
 elif args.url:
-	vid_name = 'ID-' + args.url[31:] #if there is a www, the part right after the=
+	vid_name = 'ID-' + args.url[32:] #if there is a www and https, the part right after the=
 	vid_url = args.url
 elif args.id:
 	vid_name = 'ID-' + args.id

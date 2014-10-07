@@ -3,9 +3,9 @@ function [bboxes, dres] = find_boxes(vid_name, frame_start_num, frame_stop_num, 
     
 %     addpath(genpath('pose-release-ver1.2/'));
     
-    datadir='~/Dropbox/MEng/edx-vids/';
+    datadir='~/ed-vids/';
     
-    imlist = dir([datadir vid_name '/*.png']);
+    imlist = dir([datadir vid_name '/image*.png']);
     
     parpool;
 %     disp('Using BUFFY model');

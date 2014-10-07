@@ -1,12 +1,17 @@
 clear;
 % restoredefaultpath;
 
-addpath(genpath('~/Dropbox/MEng/edx-vids/'));
-addpath(genpath('~/Dropbox/MEng/cache/'));
+% addpath(genpath('~/Dropbox/MEng/edx-vids/'));
+% addpath(genpath('~/Dropbox/MEng/cache/'));
 
-datadir  = '~/Dropbox/MEng/edx-vids/';
-cachedir = '~/Dropbox/MEng/cache/';
-vid_name = 'M-3091X-FA12-L1-3_100-10_secs';
+
+% datadir  = '~/Dropbox/MEng/edx-vids/';
+% cachedir = '~/Dropbox/MEng/cache/';
+% vid_name = 'M-3091X-FA12-L1-3_100-10_secs';
+
+vid_name = 'ID-mixmc-woOF8'
+datadir = '~/ed-vids/';
+cachedir = '~/ed-vids/';
 vid_storage_path = [cachedir vid_name '/'];
 mkdir(vid_storage_path);
 vid_path = [datadir vid_name '/'];
@@ -18,9 +23,9 @@ dres_fname = [vid_storage_path vid_name '_detec_res.mat'];
 bboxes_fname = [vid_storage_path vid_name '_bboxes.mat'];
 
 
-imlist=dir([vid_path '/*.png']);
+imlist=dir([vid_path '/image*.png']);
 
-max_imgs = 4; % for ALL, just do length(imlist)
+max_imgs = length(imlist); % for ALL, just do length(imlist)
 
 try
     disp('Using BUFFY model');
@@ -54,7 +59,7 @@ dres_dp       = tracking_cvpr11_release_v1_0.tracking_dp(dres, c_en, c_ex, c_ij,
 dres_dp.r     = -dres_dp.id;
 toc
 
-input_frames    = [datadir vid_name '/image_%0.8d_0.png'];
+input_frames    = [datadir vid_name '/image_%0.8d.png'];
 output_path     = [vid_storage_path vid_name '_dp_tracked/'];
 output_vidname  = [vid_storage_path vid_name '_dp_tracked.avi'];
 
