@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../vidutils/python')
+
 import vidutils
 import numpy as np
 import os.path

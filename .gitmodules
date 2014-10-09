@@ -1,0 +1,3 @@
+[submodule "vidutils"]
+	path = vidutils
+	url = git@bitbucket.org:mprat/vidutils.git

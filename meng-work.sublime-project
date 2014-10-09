@@ -3,7 +3,11 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "/afs/csail.mit.edu/u/m/mprat/meng-work"
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/afs/csail.mit.edu/u/m/mprat/vid_to_json"
 		}
 	]
 }
