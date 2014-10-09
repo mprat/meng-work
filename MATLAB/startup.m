@@ -10,5 +10,7 @@ function startup(loc)
 	end
 
 	addpath([path_of_repo 'MATLAB/']);
+	addpath(genpath([path_of_repo '../libsvm']));
+	% addpath(genpath([path_of_repo '/MATLAB/toolbox'])); % Piotr Dollar's toolbox
 	cd(path_of_repo);
 end
