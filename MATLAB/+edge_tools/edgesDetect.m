@@ -39,10 +39,10 @@ if( opts.multiscale )
   % if multiscale run edgesDetect multiple times
   ss=2.^(-1:1); k=length(ss); inds=cell(1,k); segs=inds;
   siz=size(I); model.opts.multiscale=0; model.opts.nms=0; E=0;
-  for i=1:k, s=ss(i); I1=imResample(I,s);
-    if(nargout<4), [E1,~,inds{i}]=edgesDetect(I1,model);
-    else [E1,~,inds{i},segs{i}]=edgesDetect(I1,model); end
-    E=E+imResample(E1,siz(1:2));
+  for i=1:k, s=ss(i); I1=dollar_toolbox.channels.imResample(I,s);
+    if(nargout<4), [E1,~,inds{i}]=edge_tools.edgesDetect(I1,model);
+    else [E1,~,inds{i},segs{i}]=edge_tools.edgesDetect(I1,model); end
+    E=E+dollar_toolbox.channels.imResample(E1,siz(1:2));
   end; E=E/k; model.opts=opts;
   
 else
@@ -52,10 +52,10 @@ else
   I = dollar_toolbox.channels.imPad(I,p,'symmetric');
   
   % compute features and apply forest to image
-  [chnsReg,chnsSim] = edgesChns( I, opts );
+  [chnsReg,chnsSim] = edge_tools.edgesChns( I, opts );
   s=opts.sharpen; if(s), I=dollar_toolbox.channels.convTri(dollar_toolbox.channels.rgbConvert(I,'rgb'),1); end
-  if(nargout<4), [E,inds] = edgesDetectMex(model,I,chnsReg,chnsSim);
-  else [E,inds,segs] = edgesDetectMex(model,I,chnsReg,chnsSim); end
+  if(nargout<4), [E,inds] = edge_tools.private.edgesDetectMex(model,I,chnsReg,chnsSim);
+  else [E,inds,segs] = edge_tools.private.edgesDetectMex(model,I,chnsReg,chnsSim); end
   
   % normalize and finalize edge maps
   t=opts.stride^2/opts.gtWidth^2/opts.nTreesEval; r=opts.gtWidth/2;
@@ -71,6 +71,6 @@ if( opts.nms==-1 ), O=[]; elseif( nargout>1 || opts.nms )
 end
 
 % perform nms
-if( opts.nms>0 ), E=edgesNmsMex(E,O,1,5,1.01,opts.nThreads); end
+if( opts.nms>0 ), E=edge_tools.private.edgesNmsMex(E,O,1,5,1.01,opts.nThreads); end
 
 end

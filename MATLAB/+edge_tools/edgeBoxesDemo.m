@@ -19,7 +19,7 @@ tic, bbs=edgeBoxes(I,model,opts); toc
 gt=[122 248 92 65; 193 82 71 53; 410 237 101 81; 204 160 114 95; ...
   9 185 86 90; 389 93 120 117; 253 103 107 57; 81 140 91 63];
 if(0), gt='Please select an object box.'; disp(gt); figure(1); imshow(I);
-  title(gt); [~,gt]=imRectRot('rotate',0); gt=gt.getPos(); end
+  title(gt); [~,gt]=dollar_toolbox.images.imRectRot('rotate',0); gt=gt.getPos(); end
 gt(:,5)=0; [gtRes,dtRes]=dollar_toolbox.detector.bbGt('evalRes',gt,double(bbs),.7);
 figure(1); dollar_toolbox.detector.bbGt('showRes',I,gtRes,dtRes(dtRes(:,6)==1,:));
 title('green=matched gt  red=missed gt  dashed-green=matched detect');

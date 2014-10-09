@@ -81,10 +81,10 @@ end
 function bbs = edgeBoxesImg( I, model, o )
 % Generate Edge Boxes object proposals in single image.
 if(all(ischar(I))), I=imread(I); end
-model.opts.nms=0; [E,O]=edgesDetect(I,model);
-if(0), E=gradientMag(convTri(single(I),4)); E=E/max(E(:)); end
-E=edgesNmsMex(E,O,2,0,1,model.opts.nThreads);
-bbs=edgeBoxesMex(E,O,o.alpha,o.beta,o.minScore,o.maxBoxes,...
+model.opts.nms=0; [E,O]=edge_tools.edgesDetect(I,model);
+if(0), E=dollar_toolbox.channels.gradientMag(dollar_toolbox.channels.convTri(single(I),4)); E=E/max(E(:)); end
+E=edge_tools.private.edgesNmsMex(E,O,2,0,1,model.opts.nThreads);
+bbs=edge_tools.private.edgeBoxesMex(E,O,o.alpha,o.beta,o.minScore,o.maxBoxes,...
   o.edgeMinMag,o.edgeMergeThr,o.clusterMinMag,...
   o.maxAspectRatio,o.minBoxArea,o.gamma,o.kappa);
 end
