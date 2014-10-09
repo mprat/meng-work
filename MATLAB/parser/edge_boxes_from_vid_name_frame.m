@@ -19,7 +19,7 @@ function bbs = edge_boxes_from_vid_name_frame(vid_name, frame_num)
 	tic, bbs=edge_tools.edgeBoxes(I,model,opts); toc
 
 	%% show the bounding boxes on the image
-	if (1)
+	if (0)
 		figure(1); imshow(I);
 		% the 5th element of bbs is the score, but it seems to be breaking the 'draw' function?
 		dollar_toolbox.detector.bbApply('draw', bbs(:, 1:4));
