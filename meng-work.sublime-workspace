@@ -4,8 +4,160 @@
 		"selected_items":
 		[
 			[
+				"vd",
+				"vid_name"
+			],
+			[
+				"fil",
+				"filenames_slide"
+			],
+			[
+				"features",
+				"features_slides"
+			],
+			[
+				"fea",
+				"features_slides"
+			],
+			[
+				"check",
+				"check_output"
+			],
+			[
+				"vid_",
+				"vid_name"
+			],
+			[
+				"vid",
+				"vid_name"
+			],
+			[
+				"traini",
+				"training_features"
+			],
+			[
+				"image_",
+				"image_paths"
+			],
+			[
+				"you",
+				"youtubeURL"
+			],
+			[
+				"filename",
+				"filename"
+			],
+			[
+				"dele",
+				"delete_video"
+			],
+			[
+				"fie",
+				"filename"
+			],
+			[
+				"filen",
+				"filename_dict"
+			],
+			[
+				"down",
+				"download_video_id"
+			],
+			[
+				"file",
+				"filename_dict"
+			],
+			[
 				"list_",
-				"list_trans"
+				"list_of_corresp_indices"
+			],
+			[
+				"out",
+				"out_file_name"
+			],
+			[
+				"fra",
+				"frames_dir_name"
+			],
+			[
+				"fr",
+				"frames_dir_name"
+			],
+			[
+				"frame",
+				"frame_nums"
+			],
+			[
+				"vi",
+				"vid_name"
+			],
+			[
+				"do",
+				"download_video_url"
+			],
+			[
+				"csv_",
+				"csv_ids_frames_labels_to_mat"
+			],
+			[
+				"mat",
+				"matlab_name"
+			],
+			[
+				"label",
+				"label_list"
+			],
+			[
+				"fin",
+				"final_labels"
+			],
+			[
+				"final_",
+				"final_image_paths"
+			],
+			[
+				"fial",
+				"final_image_paths"
+			],
+			[
+				"list",
+				"list_image_paths"
+			],
+			[
+				"youtube",
+				"youtubeURL"
+			],
+			[
+				"predicted_",
+				"predicted_label_num"
+			],
+			[
+				"pre",
+				"predicted_label_text"
+			],
+			[
+				"predi",
+				"predicted_label_num"
+			],
+			[
+				"predic",
+				"predicted_label_text"
+			],
+			[
+				"segm",
+				"segment_list"
+			],
+			[
+				"st",
+				"start-time"
+			],
+			[
+				"frames",
+				"frames_dir_name"
+			],
+			[
+				"vid_name_f",
+				"vid_name_f"
 			],
 			[
 				"item",
@@ -40,10 +192,6 @@
 				"inline-block"
 			],
 			[
-				"list",
-				"list-style"
-			],
-			[
 				"border-width",
 				"border-bottom-width"
 			],
@@ -74,10 +222,6 @@
 			[
 				"font-",
 				"font-size"
-			],
-			[
-				"check",
-				"checkoutbtn"
 			],
 			[
 				"num",
@@ -311,39 +455,47 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "python/vids_csv_to_matlab.py",
-			"settings":
-			{
-				"buffer_size": 538,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "MATLAB/parser/features_from_list_of_image_paths.m",
-			"settings":
-			{
-				"buffer_size": 695,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "MATLAB/+utils/mat_to_cell_array.m",
-			"settings":
-			{
-				"buffer_size": 678,
-				"line_ending": "Unix"
-			}
-		}
 	],
-	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
 	{
-		"height": 267.0,
+		"height": 352.0,
 		"selected_items":
 		[
 			[
+				"",
+				":$ - EOF"
+			],
+			[
 				"mat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"bib",
+				"Set Syntax: BibTeX"
+			],
+			[
+				"PAC",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"MAT",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"maa",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"mt",
+				"Bookmarks: Toggle"
+			],
+			[
+				"M",
 				"Set Syntax: MATLAB"
 			],
 			[
@@ -367,10 +519,6 @@
 				"Preferences: Settings - Default"
 			],
 			[
-				"package",
-				"Package Control: Remove Package"
-			],
-			[
 				"latextools",
 				"LaTeXTools: Toggle focus (PDF/editor)"
 			],
@@ -381,10 +529,6 @@
 			[
 				"latex",
 				"LaTeXTools: Jump to PDF"
-			],
-			[
-				"",
-				":$ - EOF"
 			],
 			[
 				"prefere",
@@ -495,7 +639,7 @@
 				"View: Toggle Open Files in Side Bar"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -516,21 +660,77 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/meng-work",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser"
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/libsvm",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/libsvm/matlab",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB"
 	],
 	"file_history":
 	[
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/vid_name_to_all_frames_features.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/setup.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/features_from_list_of_image_paths.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/train_on_10_2_dataset.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/ed_video_analysis_play/find_boxes.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/show_bboxes_on_video.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/ed_video_analysis_play/analyze_ed_video.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/get_frame.m",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/frame_at_seconds_from_vids.m",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/get_all_frames_from_csv.m",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/pair_research_classification_prep.sh",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames.m",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames_test.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/edge_boxes_from_vid_name_frame.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid_to_json/MATLAB/setup.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/csv_to_frames.py",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/vids_csv_to_matlab.py",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/overlap_vids.py",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/vidutils.py",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/download_video.py",
+		"/afs/csail.mit.edu/u/m/mprat/vid_to_json/python/construct_json_from_prediction_labels.py",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/construct_json_from_prediction_labels.py",
+		"/afs/csail.mit.edu/u/m/mprat/vid_to_json/python/download_video.py",
+		"/afs/csail.mit.edu/u/m/mprat/vid_to_json/caffe_path_setup.sh",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/vid_name_to_all_frames_features.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/show_frames_and_labels.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/extractDeepFeatures.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+edge_tools/edgeBoxes.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+dollar_toolbox/+detector/bbApply.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+dollar_toolbox/+images/imRectRot.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+edge_tools/edgeBoxesDemo.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/release/edgeBoxesDemo.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+edge_tools/edgesDetect.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/startup.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/slide_diffs.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/SelectiveSearchCodeIJCV/demo.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/selective_search_from_list_filenames.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/selective_search_from_vid_name_frame.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+dollar_toolbox/+detector/bbGt.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/release/edgesDetect.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/release/edgesChns.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+dollar_toolbox/+channels/gradientMag.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/release/edgeBoxes.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/release/readme.txt",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/.gitignore",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+SelectiveSearchPcode/demo.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/SelectiveSearchPcode/demo.m",
+		"/Users/mprat/Downloads/Exported Items.bib",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+text_extract/get_text.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/meng-work.sublime-project",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/mat_to_cell_array.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/256-from-ID-aTuYZqhEvuk.mat",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+pose_release_v1_2/+code_basic/compile.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+pose_release_v1_2/+code_basic/fconv/fconv.mexa64",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/ed_video_analysis_play/env_setup.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/ed_video_analysis_play/analyze_ed_video.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/256-from-ID-aTuYZqhEvuk-predicted-labels.mat",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/make_svm.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/test_svm.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/train_on_head_no_head_dataset.m",
+		"/Users/mprat/Documents/repos/6867-homework1/hw1_review_1.txt",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/path_setup.sh",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/get_all_frames_from_csv.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python/get_frame.py",
+		"/Users/mprat/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/frame_at_seconds_from_vids.m",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/bash_scripts/pair_research_classification_prep.sh",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+utils/vid_to_frames_test.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+pose_release_v1_2/COPYING",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/calc_overlap.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/+tracking_cvpr11_release_v1_0/+3rd_party/voc-release3.1/color.m",
@@ -542,7 +742,6 @@
 		"/Users/mprat/Dropbox/Resumes/resume_complete.tex",
 		"/Users/mprat/Documents/repos/6867-homework1/homework1soln.fdb_latexmk",
 		"/Users/mprat/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/Users/mprat/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/mprat/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/mprat/Documents/repos/6867-homework1/6867homework1.sublime-project",
 		"/Users/mprat/Library/Application Support/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
@@ -595,67 +794,11 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-17-decode-a-web-page.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-16-password-generator-solutions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-15-reverse-word-order.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-14-list-remove-duplicates-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-30-13-fibonacci.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-25-12-list-ends.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-11-check-primality-functions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-10-list-overlap-comprehensions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-10-list-overlap-comprehensions-solution.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-02-08-rock-paper-scissors-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-08-rock-paper-scissors.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-07-list-comprehensions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-06-string-lists-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-05-list-overlap-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-12-06-string-lists.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-05-05-list-overlap.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-05-04-divisors-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-02-odd-or-even-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-26-04-divisors.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-26-03-list-less-than-10-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-03-list-less-than-10.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_drafts/character-input-solution-datetime.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_drafts/all-exercises.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-01-character-input-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-01-character-input.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_layouts/post.html",
-		"/home/mprat/.config/sublime-text-3/Packages/User/pygment-highlight.sublime-snippet",
-		"/home/mprat/Documents/Michele/Repos/practicepython/practicepython.sublime-project",
-		"/home/mprat/.config/sublime-text-3/Packages/User/MarkdownPreview.sublime-settings",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_layouts/exercise.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_layouts/exercise.html",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-01-29-1-character-input.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-05-1-character-input-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-3-list-less-than-10.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-7-list-comprehensions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/Gemfile",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-02-15-odd-or-even-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-02-rock-paper-scissors-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-check-primality-functions-solution.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-list-overlap-comprehensions-solution.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-password-generator-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-28-reverse-word-order-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-28-reversewords-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-list-remove-duplicates-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-lst-ends-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-guessing-game-1-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-list-comprehensions-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-string-lists-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-19-list-overlap-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-reverse-word-order.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-decode-a-web-page.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-28-password-generator.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-reversewordorder.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-list-remove-duplicates.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-30-fibonacci.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-25-list-ends.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-check-primality-functions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-list-overlap-comprehensions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-02-guessing-game-1.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-rock-paper-scissors.md"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-14-list-remove-duplicates-solutions.md"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -670,6 +813,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"subprocess",
+			"text",
+			"draw",
+			"showRes",
+			"print",
+			"vid_URL",
+			"ID-Y",
+			"get_frame",
+			"repmat",
+			" ",
 			"Iterations",
 			"35",
 			" & (-2, 0, 0)",
@@ -787,16 +940,6 @@
 			"all_posts",
 			"detail-text",
 			"detail-display",
-			"h3",
-			"list-sty",
-			"project-",
-			"detail-dis",
-			"h2",
-			"nav > ul",
-			"background",
-			"h3",
-			"text-",
-			"text",
 			"h3"
 		],
 		"highlight": true,
@@ -815,101 +958,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "python/vids_csv_to_matlab.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 538,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								170,
-								170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 1,
-					"file": "MATLAB/parser/features_from_list_of_image_paths.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 695,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								247,
-								247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Matlab/Matlab.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "MATLAB/+utils/mat_to_cell_array.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 678,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								599,
-								599
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Objective-C/Objective-C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -930,12 +980,6 @@
 				0,
 				1,
 				1
-			],
-			[
-				0,
-				1,
-				1,
-				2
 			]
 		],
 		"cols":
@@ -946,14 +990,13 @@
 		"rows":
 		[
 			0.0,
-			0.5,
 			1.0
 		]
 	},
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 112.0
+		"height": 233.0
 	},
 	"output.find_results":
 	{
@@ -991,11 +1034,11 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 197.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1005,7 +1048,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 195.0,
+	"side_bar_width": 275.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

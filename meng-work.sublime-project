@@ -7,7 +7,15 @@
 		},
 		{
 			"follow_symlinks": true,
-			"path": "/afs/csail.mit.edu/u/m/mprat/vid_to_json"
+			"path": "/afs/csail.mit.edu/u/m/mprat/vid-to-json"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/afs/csail.mit.edu/u/m/mprat/libsvm"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/afs/csail.mit.edu/u/m/mprat/vidutils"
 		}
 	]
 }
