@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"varar",
+				"varargin"
+			],
+			[
+				"predi",
+				"predicted_label"
+			],
+			[
+				"frame",
+				"frame_num"
+			],
+			[
+				"vid_",
+				"vid_name"
+			],
+			[
 				"vd",
 				"vid_name"
 			],
@@ -22,10 +38,6 @@
 			[
 				"check",
 				"check_output"
-			],
-			[
-				"vid_",
-				"vid_name"
 			],
 			[
 				"vid",
@@ -84,10 +96,6 @@
 				"frames_dir_name"
 			],
 			[
-				"frame",
-				"frame_nums"
-			],
-			[
 				"vi",
 				"vid_name"
 			],
@@ -134,10 +142,6 @@
 			[
 				"pre",
 				"predicted_label_text"
-			],
-			[
-				"predi",
-				"predicted_label_num"
 			],
 			[
 				"predic",
@@ -455,6 +459,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_gui.m",
+			"settings":
+			{
+				"buffer_size": 6250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
+			"settings":
+			{
+				"buffer_size": 1289,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
+			"settings":
+			{
+				"buffer_size": 800,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_and_labels.m",
+			"settings":
+			{
+				"buffer_size": 497,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -661,12 +697,19 @@
 	"expanded_folders":
 	[
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/libsvm",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/libsvm/matlab",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB"
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/data",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/python",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/vidutils",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/vidutils/python"
 	],
 	"file_history":
 	[
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frame_and_label.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/analyze_video.sh",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/python/get_millis_frames.py",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/vidutils/python/vidutils.py",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/vid_name_to_all_frames_features.m",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/setup.m",
 		"/afs/csail.mit.edu/u/m/mprat/meng-work/MATLAB/parser/features_from_list_of_image_paths.m",
@@ -789,12 +832,7 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-14-list-remove-duplicates.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-12-list-ends-solutions.md",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-11-check-primality-functions-solution.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-09-guessing-game-1-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-03-26-07-list-comprehensions-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-17-decode-a-web-page.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-06-06-16-password-generator-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-15-reverse-word-order.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-21-14-list-remove-duplicates-solutions.md"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-09-guessing-game-1-solutions.md"
 	],
 	"find":
 	{
@@ -813,6 +851,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"VARARGIN",
 			"subprocess",
 			"text",
 			"draw",
@@ -939,8 +978,7 @@
 			"font-style",
 			"all_posts",
 			"detail-text",
-			"detail-display",
-			"h3"
+			"detail-display"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -958,8 +996,135 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_gui.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1058,
+								1058
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1284,
+								1284
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 15.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								631,
+								631
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_and_labels.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								347,
+								487
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -999,6 +1164,10 @@
 		"height": 233.0
 	},
 	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
 	{
 		"height": 0.0
 	},
