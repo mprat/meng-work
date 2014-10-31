@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 import json
 import pprint
@@ -70,6 +70,16 @@ class wait_for_page_load(object):
     def __exit__(self, *_):
         wait_for(self.page_has_loaded)
 
+def iframe_src_contains_youtube(iframe):
+    try:
+        val = "youtube" in iframe.get_attribute("src")
+        return val
+    except:
+        return False
+    
+def iframe_and_iframe_src_contains_youtube(driver):
+    return EC.presence_of_element_located((By.TAG_NAME, 'iframe')) and iframe_src_contains_youtube(driver.find_element_by_tag_name('iframe'))
+
 
 driver = webdriver.Firefox()
 driver.get('https://courses.edx.org/login')
@@ -100,6 +110,10 @@ for course in course_info:
         if avail != 'Starting Soon':
             try:
                 start = datetime.datetime.now()
+
+                # before you open the file again, save the old version
+                copy_prev()
+
                 with open('all-courses-enhanced-' + date_to_use + '.json', 'w') as json_enhanced_file:
                     list_of_course_vids = []
                     list_of_course_subtitles = []
@@ -188,26 +202,64 @@ for course in course_info:
                                     if vid_elems:
                                         vid_count = 0
                                         for vid_elem_index in range(len(vid_elems)):
-                                            vid_elem = vid_elems[vid_elem_index]
-                                            vid_elem.click()
+                                            vid_elems = driver.find_elements_by_class_name('seq_video')
+
+                                            if vid_elems:
+                                                vid_elem = vid_elems[vid_elem_index]
+                                                vid_elem.click()
 
                                             # raw_input('press enter to continue')
+
                                             try:
                                                 element = WebDriverWait(driver, 10).until(
                                                     EC.presence_of_element_located((By.TAG_NAME, 'iframe'))
                                                 )
-                                            except TimeoutException:
-                                                # reload page 
+                                                # driver.get(driver.current_url)
+                                                # driver.implicitly_wait(3)
+                                            except:
                                                 driver.get(driver.current_url)
-                                                element = WebDriverWait(driver, 10).until(
-                                                    EC.presence_of_element_located((By.TAG_NAME, 'iframe'))
-                                                )
+                                                driver.implicitly_wait(3)
 
-                                            full_url = driver.find_element_by_tag_name('iframe').get_attribute('src')
+
+
+                                            # TODO: NEED TO RELOAD THE PAGE UNTIL THE SRC OF THE IFRAME
+                                            # HAS SOMETHING IN IT
+                                            # try:
+                                            #     element = WebDriverWait(driver,10).until(iframe_and_iframe_src_contains_youtube)
+                                            # except TimeoutException:
+                                            #     driver.get(driver.current_url)
+                                            #     driver.implicitly_wait(3)
+                                                # element = WebDriverWait(driver,10).until(iframe_and_iframe_src_contains_youtube)
+
+                                            # try:
+                                            #     element = WebDriverWait(driver, 10).until(
+                                            #         EC.presence_of_element_located((By.TAG_NAME, 'iframe'))
+                                            #     )
+                                            #     driver.implicitly_wait(2)
+                                            # except TimeoutException:
+                                            #     # reload page 
+                                            #     driver.get(driver.current_url)
+                                            #     element = WebDriverWait(driver, 10).until(
+                                            #         EC.presence_of_element_located((By.TAG_NAME, 'iframe'))
+                                            #     )
+                                            #     driver.implicitly_wait(2)
+
+                                            # driver.implicitly_wait(5)
+                                            iframes = driver.find_elements_by_tag_name('iframe')
+                                            full_url = ''
+                                            for frame in iframes:
+                                                if "youtube" in frame.get_attribute('src'):
+                                                    full_url = frame.get_attribute('src')
+
+                                            # full_url = last_iframe.get_attribute('src')
                                             m = re.search('/embed/(?P<id>.*)', full_url.split('?')[0])
                                             # youtube video ID
                                             # print "videoID = ", m.group('id')
-                                            list_of_course_vids.append(m.group('id'))
+                                            if m:
+                                                list_of_course_vids.append(m.group('id'))
+                                            else:
+                                                print "VIDEO NOT FOUND"
+                                                raw_input("Press enter to continue after perhaps fixing this")
                                             transcript_link = ''
 
                                             try:
@@ -215,7 +267,10 @@ for course in course_info:
                                                 transcript_link = driver.find_element_by_link_text('Download transcript').get_attribute('href')
                                             except NoSuchElementException:
                                                 # print "no 'Download transcript' link found"
-                                                transcript_link = ''
+                                                try:
+                                                    transcript_link = driver.find_element_by_link_text('transcript').get_attribute('href')
+                                                except:
+                                                    transcript_link = ''
 
                                             list_of_course_subtitles.append(transcript_link) 
 
@@ -255,7 +310,7 @@ for course in course_info:
 
                         # print list_of_course_vids
                         # print list_of_course_subtitles
-                        # raw_input('press enter to continue')
+                        raw_input('press enter to continue and record where this error came from')
 
                     # print list_of_course_vids
                     # print list_of_course_subtitles
