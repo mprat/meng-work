@@ -20,7 +20,12 @@ jsonfile.close()
 
 # data already added
 jsonfileprev = open('all-courses-enhanced-' + date_to_use + '.json', 'r')
-courses_prev = json.load(jsonfileprev)
+try:
+    courses_prev = json.load(jsonfileprev)
+except ValueError:
+    # no JSON objects
+    courses_prev = ''
+
 jsonfileprev.close()
 
 guid_list = []
@@ -69,27 +74,31 @@ raw_input('press enter to continue after you logged in yourself')
 
 num_courses_processed = 0
 
-new_course_list = []
+if courses_prev:
+    new_course_list = courses_prev
+else:
+    new_course_list = []
+
 for course in course_info:
     if course['guid'] not in guid_list:
-        print course
+        # print course
 
-        start = datetime.datetime.now()
-        with open('all-courses-enhanced-' + date_to_use + '.json', 'w') as json_enhanced_file:
-            list_of_course_vids = []
-            list_of_course_subtitles = []
-            pp.pprint(course)
-            driver.get(course['url'])
-            driver.switch_to_frame(driver.find_element_by_class_name('iframe-register'))
+        avail = ""
+        if 'Availability' in course:
+            avail = course['Availability']
+        elif 'availability' in course:
+            avail = course['availability']
+        
+        if avail != 'Starting Soon':
+            start = datetime.datetime.now()
+            with open('all-courses-enhanced-' + date_to_use + '.json', 'w') as json_enhanced_file:
+                list_of_course_vids = []
+                list_of_course_subtitles = []
+                pp.pprint(course)
+                driver.get(course['url'])
+                driver.switch_to_frame(driver.find_element_by_class_name('iframe-register'))
 
-            avail = ""
-            if 'Availability' in course:
-                avail = course['Availability']
-            elif 'availability' in course:
-                avail = course['availability']
-
-
-            if avail != 'Starting Soon':
+                # if avail != 'Starting Soon':
                 # if we are already registered, just access the courseware
                 try:
                     # driver.find_element_by_class_name("access-courseware")
@@ -232,7 +241,6 @@ for course in course_info:
 
                             
                     # TODO: when done with clicking around, navigate back to course ware page in courseware_url?
-
                 except NoSuchElementException:
                     print "There was a NoSuchElementException"
 
@@ -247,11 +255,17 @@ for course in course_info:
                 course['subtitles'] = list_of_course_subtitles
                 # pp.pprint(course)
                 new_course_list.append(course)
+
                 json.dump(new_course_list, json_enhanced_file)
+
+                # new_course_list_as_json_obj = json.dumps(new_course_list)
+                # json.dump(new_course_list_as_json_obj, json_enhanced_file)
 
                 num_courses_processed += 1
                 # raw_input('press enter to continue')
             end = datetime.datetime.now()
 
-            print "num_processed = ", num_courses_processed
-            print end - start
+        print "num_processed = ", num_courses_processed
+        print end - start
+
+driver.quit()
