@@ -11,7 +11,8 @@ import re
 import time
 pp = pprint.PrettyPrinter(indent=4)
 
-jsonfile = open('all_courses.json', 'r')
+date_to_use = '10-30-2014'
+jsonfile = open('all-courses-' + date_to_use + '.json', 'r')
 course_info = json.load(jsonfile)
 jsonfile.close()
 
@@ -56,8 +57,8 @@ raw_input('press enter to continue after you logged in yourself')
 # list_of_course_links = driver.find_elements_by_class_name("course-link")
 
 new_course_list = []
-for course in course_info[1:3]:
-    with open('all_courses_vid_info.json', 'w') as json_enhanced_file:
+for course in course_info:
+    with open('all-courses-enhanced-' + date_to_use + '.json', 'w') as json_enhanced_file:
         list_of_course_vids = []
         list_of_course_subtitles = []
         pp.pprint(course)
