@@ -67,7 +67,7 @@ raw_input('press enter to continue after you logged in yourself')
 
 # list_of_course_links = driver.find_elements_by_class_name("course-link")
 
-num_videos_processed = 0
+num_courses_processed = 0
 
 new_course_list = []
 for course in course_info:
@@ -249,9 +249,9 @@ for course in course_info:
                 new_course_list.append(course)
                 json.dump(new_course_list, json_enhanced_file)
 
-                num_videos_processed += 1
+                num_courses_processed += 1
                 # raw_input('press enter to continue')
             end = datetime.datetime.now()
 
-            print "num_processed = ", num_videos_processed
+            print "num_processed = ", num_courses_processed
             print end - start
