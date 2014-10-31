@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 
 import json
 import pprint
@@ -11,6 +12,27 @@ pp = pprint.PrettyPrinter(indent=4)
 
 jsonfile = open('all_courses.json', 'r')
 course_info = json.load(jsonfile)
+jsonfile.close()
+
+# got from http://www.obeythetestinggoat.com/how-to-get-selenium-to-wait-for-page-load-after-a-click.html
+class wait_for_page_load(object):
+
+    def __init__(self, browser):
+        self.browser = browser
+
+    def __enter__(self):
+        self.old_page = self.browser.find_element_by_tag_name('html')
+
+    def page_has_loaded(self):
+        try:
+            new_page = self.browser.find_element_by_tag_name('html')
+            return new_page.id != self.old_page.id
+        except NoSuchElementException:
+            return False
+
+    def __exit__(self, *_):
+        wait_for(self.page_has_loaded)
+
 
 driver = webdriver.Firefox()
 driver.get('https://courses.edx.org/login')
@@ -20,6 +42,9 @@ raw_input('log in yourself')
 # input('Click "Archived" on the side tab')
 
 # list_of_course_links = driver.find_elements_by_class_name("course-link")
+
+list_of_course_vids = []
+list_of_course_subtitles = []
 
 for course in course_info:
     pp.pprint(course)
@@ -39,8 +64,12 @@ for course in course_info:
             # driver.find_element_by_class_name("access-courseware")
             driver.find_element_by_class_name("access-courseware").click()
 
-            raw_input('press enter to continue')
-        except:
+            # raw_input('press enter to continue')
+            # wait for 'Courseware' to load
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.LINK_TEXT, 'Courseware'))
+            )
+        except NoSuchElementException:
             if 'has-option-verified' in driver.find_element_by_class_name("action-register").get_attribute('class'):
                 # enroll in a verified course under honor system
                 driver.find_element_by_class_name("action-register").click()
@@ -61,10 +90,12 @@ for course in course_info:
             driver.find_element_by_link_text('Courseware').click()
 
             # TODO: wait for page to load
-            raw_input('press enter to continue')
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, '//nav[@aria-label="Course Navigation"]'))
+            )
+            # raw_input('press enter to continue')
 
             cousreware_url = driver.current_url
-            # TODO: click each side link
             nav = driver.find_element_by_xpath('//nav[@aria-label="Course Navigation"]') # (find the course navigation)
             # click each chapter in course navigation
             chapters = nav.find_elements_by_class_name("chapter")
@@ -78,7 +109,7 @@ for course in course_info:
                 chapter.find_element_by_tag_name('h3').find_element_by_tag_name('a').click()
                 links = chapter.find_elements_by_tag_name('li')
 
-                raw_input('press enter to continue')
+                # raw_input('press enter to continue')
 
                 link_count = 0
                 for link_index in range(len(links)):
@@ -88,41 +119,86 @@ for course in course_info:
 
                     chapter.find_element_by_tag_name('h3').find_element_by_tag_name('a').click()
 
-                    raw_input('press enter to continue')
+                    # raw_input('press enter to continue')
 
                     links = chapter.find_elements_by_tag_name('li')
                     link = links[link_index]
                     link.find_element_by_tag_name('a').click()
                     
                     # videos within one clicked link
-                    raw_input('press enter to continue')
+                    # raw_input('press enter to continue')
 
-                    vid_elems = driver.find_elements_by_class_name('seq_video')
-                    vid_count = 0
-                    for vid_elem_index in range(len(vid_elems)):
-                        vid_elem = vid_elems[vid_elem_index]
-                        vid_elem.click()
+                    # TODO: make a better wait?
+                    # wait
+                    # driver.implicitly_wait(2) #seconds
+                    with wait_for_page_load(driver):
+                        vid_elems = driver.find_elements_by_class_name('seq_video')
 
-                        raw_input('press enter to continue')
-                        # TODO: IT BROKE HERE AND I DON'T KNOW WHY. NEED TO RE-STEP THROUGH THIS EXAMPLE
+                        if vid_elems:
+                            vid_count = 0
+                            for vid_elem_index in range(len(vid_elems)):
+                                vid_elem = vid_elems[vid_elem_index]
+                                vid_elem.click()
 
-                        full_url = driver.find_element_by_tag_name('iframe').get_attribute('src')
-                        m = re.search('/embed/(?P<id>.*)', b.split('?')[0])
-                        # youtube video ID
-                        print m.group('id')
+                                # raw_input('press enter to continue')
+                                element = WebDriverWait(driver, 10).until(
+                                    EC.presence_of_element_located((By.TAG_NAME, 'iframe'))
+                                )
 
-                        vid_count += 1
+                                full_url = driver.find_element_by_tag_name('iframe').get_attribute('src')
+                                m = re.search('/embed/(?P<id>.*)', full_url.split('?')[0])
+                                # youtube video ID
+                                # print "videoID = ", m.group('id')
+                                list_of_course_vids.append(m.group('id'))
+                                transcript_link = ''
 
+                                try:
+                                    # print "transcript download link = ", driver.find_element_by_link_text('Download transcript').get_attribute('href')
+                                    transcript_link = driver.find_element_by_link_text('Download transcript').get_attribute('href')
+                                except NoSuchElementException:
+                                    # print "no 'Download transcript' link found"
+                                    transcript_link = ''
 
-                    link_count += 1
+                                list_of_course_subtitles.append(transcript_link) 
+
+                                vid_count += 1
+                        else:
+                            try:
+                                full_url = driver.find_element_by_tag_name('iframe').get_attribute('src')
+                                m = re.search('/embed/(?P<id>.*)', full_url.split('?')[0])
+                                # youtube video ID
+                                # print "videoID = ", m.group('id')
+                                vid_id = m.group('id')
+
+                                try:
+                                    # print "transcript download link = ", driver.find_element_by_link_text('Download transcript').get_attribute('href')
+                                    transcript_link = driver.find_element_by_link_text('Download transcript').get_attribute('href')
+                                except NoSuchElementException:
+                                    # print "no 'Download transcript' link found"
+                                    transcript_link = ''
+
+                            except (NoSuchElementException, AttributeError):
+                                # print "No video on this page"
+                                vid_id = ''
+                                transcript_link = ''
+
+                            list_of_course_vids.append(vid_id)
+                            list_of_course_subtitles.append(transcript_link)
+
+                        link_count += 1
 
                 chapter_count += 1
 
                     
             # TODO: when done with clicking around, navigate back to course ware page in courseware_url?
 
-        except:
-            print "something happened"
+        except NoSuchElementException:
+            print "There was a NoSuchElementException"
             raw_input('press enter to continue')
 
+            print list_of_course_vids
+            print list_of_course_subtitles
+
         raw_input('press enter to continue')
+        print list_of_course_vids
+        print list_of_course_subtitles
