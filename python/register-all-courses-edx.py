@@ -8,8 +8,10 @@ import json
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
-jsonfile = open('all_courses.json', 'r')
+date_to_use = '11-03-2014'
+jsonfile = open('all-courses-' + date_to_use + '.json', 'r')
 course_info = json.load(jsonfile)
+jsonfile.close()
 
 driver = webdriver.Firefox()
 driver.get('https://courses.edx.org/login')
@@ -34,20 +36,20 @@ elif 'availability' in course:
 
 
 if avail != 'Starting Soon':
-		# if we are already registered, just access the courseware
-		try:
-			# driver.find_element_by_class_name("access-courseware")
-			driver.find_element_by_class_name("access-courseware").click()
-		except:
-			if 'has-option-verified' in driver.find_element_by_class_name("action-register").get_attribute('class'):
-				# enroll in a verified course under honor system
-				driver.find_element_by_class_name("action-register").click()
-				element = WebDriverWait(driver, 10).until(
-			        EC.presence_of_element_located((By.NAME, "honor_mode"))
-			    )
-				driver.find_element_by_name("honor_mode").click()
-			else:
-				# enroll in a regular course
-				driver.find_element_by_class_name("action-register").click()
+	# if we are already registered, just access the courseware
+	try:
+		# driver.find_element_by_class_name("access-courseware")
+		driver.find_element_by_class_name("access-courseware").click()
+	except:
+		if 'has-option-verified' in driver.find_element_by_class_name("action-register").get_attribute('class'):
+			# enroll in a verified course under honor system
+			driver.find_element_by_class_name("action-register").click()
+			element = WebDriverWait(driver, 10).until(
+		        EC.presence_of_element_located((By.NAME, "honor_mode"))
+		    )
+			driver.find_element_by_name("honor_mode").click()
+		else:
+			# enroll in a regular course
+			driver.find_element_by_class_name("action-register").click()
 
 	# raw_input('press enter to continue')

@@ -15,7 +15,7 @@ import shutil
 pp = pprint.PrettyPrinter(indent=4)
 
 # all course data
-date_to_use = '10-30-2014'
+date_to_use = '11-03-2014'
 jsonfile = open('all-courses-' + date_to_use + '.json', 'r')
 course_info = json.load(jsonfile)
 jsonfile.close()
@@ -133,18 +133,56 @@ for course in course_info:
                             EC.presence_of_element_located((By.LINK_TEXT, 'Courseware'))
                         )
                     except NoSuchElementException:
-                        if 'has-option-verified' in driver.find_element_by_class_name("action-register").get_attribute('class'):
-                            # enroll in a verified course under honor system
-                            driver.find_element_by_class_name("action-register").click()
-                            element = WebDriverWait(driver, 10).until(
-                                EC.presence_of_element_located((By.NAME, "honor_mode"))
-                            )
-                            driver.find_element_by_name("honor_mode").click()
+                        try:
+                            if 'has-option-verified' in driver.find_element_by_class_name("action-register").get_attribute('class'):
+                                # enroll in a verified course under honor system
+                                driver.find_element_by_class_name("action-register").click()
+                                element = WebDriverWait(driver, 10).until(
+                                    EC.presence_of_element_located((By.NAME, "honor_mode"))
+                                )
+                                driver.find_element_by_name("honor_mode").click()
 
-                            # driver.find_element_by_class_name("access-courseware").click()
-                        else:
-                            # enroll in a regular course
-                            driver.find_element_by_class_name("action-register").click()
+
+                                driver.get(course['url'])
+                                driver.switch_to_frame(driver.find_element_by_class_name('iframe-register'))
+                                driver.find_element_by_class_name("access-courseware").click()
+
+                                # raw_input('press enter to continue')
+                                # wait for 'Courseware' to load
+                                element = WebDriverWait(driver, 10).until(
+                                    EC.presence_of_element_located((By.LINK_TEXT, 'Courseware'))
+                                )
+                                # driver.find_element_by_class_name("access-courseware").click()
+                            else:
+                                # enroll in a regular course
+                                driver.find_element_by_class_name("action-register").click()
+
+                                # element = WebDriverWait(driver, 10).until(
+                                    # EC.presence_of_element_located((By.CLASS_NAME, "access-courseware"))
+                                # )
+
+                                # driver.find_element_by_class_name("access-courseware").click()
+
+                                # raw_input('press enter to continue')
+                                # wait for 'Courseware' to load
+                                # element = WebDriverWait(driver, 10).until(
+                                    # EC.presence_of_element_located((By.LINK_TEXT, 'Courseware'))
+                                # )
+
+                                driver.get(course['url'])
+                                driver.switch_to_frame(driver.find_element_by_class_name('iframe-register'))
+                                driver.find_element_by_class_name("access-courseware").click()
+
+                                # raw_input('press enter to continue')
+                                # wait for 'Courseware' to load
+                                element = WebDriverWait(driver, 10).until(
+                                    EC.presence_of_element_located((By.LINK_TEXT, 'Courseware'))
+                                )
+
+                        except NoSuchElementException:
+                            print "There was a NoSuchElementException"
+                            # driver.get(course['url'])
+                            raw_input("Press enter to continue to the next course")
 
                     try:
                         # driver.find_element_by_class_name("access-courseware").click()
