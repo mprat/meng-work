@@ -107,7 +107,7 @@ for course in course_info:
         elif 'availability' in course:
             avail = course['availability']
         
-        if avail != 'Starting Soon':
+        if avail != 'Starting Soon' and avail != 'Upcoming' and 'PekingX' not in course['schools'] and 'TsinghuaX' not in course['schools']:
             try:
                 start = datetime.datetime.now()
 
@@ -343,8 +343,8 @@ for course in course_info:
 
                                 
                         # TODO: when done with clicking around, navigate back to course ware page in courseware_url?
-                    except NoSuchElementException:
-                        print "There was a NoSuchElementException"
+                    except Exception as e:
+                        print "There was a Exception", e
 
                         # print list_of_course_vids
                         # print list_of_course_subtitles
@@ -372,7 +372,9 @@ for course in course_info:
                     json.dump(new_course_list, json_enhanced_file)
 
                 print "Unexpected error:", sys.exc_info()[0]
-                raise
+                raw_input("enter to continue")
+                end = datetime.datetime.now()
+                # raise
 
             print "num_processed = ", num_courses_processed
             print end - start

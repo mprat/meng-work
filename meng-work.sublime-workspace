@@ -471,7 +471,7 @@
 			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
 			"settings":
 			{
-				"buffer_size": 1289,
+				"buffer_size": 1247,
 				"line_ending": "Unix"
 			}
 		},
@@ -479,7 +479,7 @@
 			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
 			"settings":
 			{
-				"buffer_size": 800,
+				"buffer_size": 3069,
 				"line_ending": "Unix"
 			}
 		},
@@ -696,7 +696,6 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/data",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/python",
@@ -1037,15 +1036,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1289,
+						"buffer_size": 1247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1284,
-								1284
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1057,7 +1056,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 15.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1069,15 +1068,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 800,
+						"buffer_size": 3069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								631,
-								631
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1217,7 +1216,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 275.0,
+	"side_bar_width": 163.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
