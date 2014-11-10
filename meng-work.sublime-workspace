@@ -459,38 +459,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_gui.m",
-			"settings":
-			{
-				"buffer_size": 6250,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
-			"settings":
-			{
-				"buffer_size": 1247,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
-			"settings":
-			{
-				"buffer_size": 3069,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_and_labels.m",
-			"settings":
-			{
-				"buffer_size": 497,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -696,14 +664,14 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/data",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/python",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/vidutils",
-		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/vidutils/python"
+		"/afs/csail.mit.edu/u/m/mprat/meng-work",
+		"/afs/csail.mit.edu/u/m/mprat/meng-work/python"
 	],
 	"file_history":
 	[
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_and_labels.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
+		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_gui.m",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frame_and_label.m",
 		"/afs/csail.mit.edu/u/m/mprat/vid-to-json/analyze_video.sh",
@@ -828,10 +796,7 @@
 		"/home/mprat/Documents/Michele/Repos/practicepython/css/syntax.css",
 		"/home/mprat/Documents/Michele/Repos/practicepython/why-practice-python/index.html",
 		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-28-15-reverse-word-order-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-14-list-remove-duplicates.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-12-list-ends-solutions.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-16-11-check-primality-functions-solution.md",
-		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-04-10-09-guessing-game-1-solutions.md"
+		"/home/mprat/Documents/Michele/Repos/practicepython/_posts/2014-05-15-14-list-remove-duplicates.md"
 	],
 	"find":
 	{
@@ -995,135 +960,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_gui.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6250,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1058,
-								1058
-							]
-						],
-						"settings":
-						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Matlab/Matlab.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/get_image_and_label.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Matlab/Matlab.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/gui_frames.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3069,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Matlab/Matlab.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/afs/csail.mit.edu/u/m/mprat/vid-to-json/MATLAB/show_frames_and_labels.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 497,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								347,
-								487
-							]
-						],
-						"settings":
-						{
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Matlab/Matlab.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1216,7 +1054,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 163.0,
+	"side_bar_width": 285.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
