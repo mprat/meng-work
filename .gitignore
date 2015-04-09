@@ -2,3 +2,5 @@
 ._*
 *.pyc
 *.sublime-workspace
+MATLAB/+dollar_toolbox/*
+MATLAB/+edge_tools/*
