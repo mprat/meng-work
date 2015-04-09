@@ -1,11 +1,13 @@
 % Demo for Edge Boxes (please see readme.txt first).
 
 %% load pre-trained edge detection model and set opts (see edgesDemo.m)
-model=load('models/forest/modelBsds'); model=model.model;
+path = startup('mac');
+
+model=load([path 'MATLAB/+edge_tools/models/forest/modelBsds']); model=model.model;
 model.opts.multiscale=0; model.opts.sharpen=2; model.opts.nThreads=4;
 
 %% set up opts for edgeBoxes (see edgeBoxes.m)
-opts = edgeBoxes;
+opts = edge_tools.edgeBoxes;
 opts.alpha = .65;     % step size of sliding window search
 opts.beta  = .75;     % nms threshold for object proposals
 opts.minScore = .05;  % min score of boxes to detect
@@ -13,7 +15,7 @@ opts.maxBoxes = 1e4;  % max number of boxes to detect
 
 %% detect Edge Box bounding box proposals (see edgeBoxes.m)
 I = imread('peppers.png');
-tic, bbs=edgeBoxes(I,model,opts); toc
+tic, bbs=edge_tools.edgeBoxes(I,model,opts); toc
 
 %% show evaluation results (using pre-defined or interactive boxes)
 gt=[122 248 92 65; 193 82 71 53; 410 237 101 81; 204 160 114 95; ...

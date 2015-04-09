@@ -33,4 +33,4 @@ function [Gx,Gy] = gradient2( I )
 % Please email me if you find bugs, or have suggestions or questions!
 % Licensed under the Simplified BSD License [see external/bsd.txt]
 
-[Gx,Gy]=gradientMex('gradient2',I);
+[Gx,Gy]=dollar_toolbox.channels.private.gradientMex('gradient2',I);

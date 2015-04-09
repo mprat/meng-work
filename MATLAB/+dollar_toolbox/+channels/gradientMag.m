@@ -47,8 +47,8 @@ if(nargin<3 || isempty(normRad)), normRad=0; end
 if(nargin<4 || isempty(normConst)), normConst=.005; end
 if(nargin<5 || isempty(full)), full=0; end
 
-if(nargout<=1), M=gradientMex('gradientMag',I,channel,full);
-else [M,O]=gradientMex('gradientMag',I,channel,full); end
+if(nargout<=1), M=dollar_toolbox.channels.private.gradientMex('gradientMag',I,channel,full);
+else [M,O]=dollar_toolbox.channels.private.gradientMex('gradientMag',I,channel,full); end
 
 if( normRad==0 ), return; end; S = dollar_toolbox.channels.convTri( M, normRad );
-gradientMex('gradientMagNorm',M,S,normConst); % operates on M
+dollar_toolbox.channels.private.gradientMex('gradientMagNorm',M,S,normConst); % operates on M

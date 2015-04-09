@@ -459,6 +459,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "MATLAB/ed_video_analysis_play/analyze_ed_video.m",
+			"settings":
+			{
+				"buffer_size": 2765,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -664,8 +672,11 @@
 	},
 	"expanded_folders":
 	[
-		"/afs/csail.mit.edu/u/m/mprat/meng-work",
-		"/afs/csail.mit.edu/u/m/mprat/meng-work/python"
+		"/Users/mprat/Documents/repos/meng-work",
+		"/Users/mprat/Documents/repos/meng-work/MATLAB",
+		"/Users/mprat/Documents/repos/meng-work/MATLAB/+pose_release_v1_2",
+		"/Users/mprat/Documents/repos/meng-work/MATLAB/+pose_release_v1_2/+code_basic",
+		"/Users/mprat/Documents/repos/meng-work/MATLAB/ed_video_analysis_play"
 	],
 	"file_history":
 	[
@@ -960,8 +971,44 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "MATLAB/ed_video_analysis_play/analyze_ed_video.m",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": true,
+							"WordCountSyntax": "matlab",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Matlab/Matlab.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

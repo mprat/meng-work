@@ -1,4 +1,4 @@
-function startup(loc)
+function path_of_repo = startup(loc)
 	if strcmp(loc, 'afsmac')
 		path_of_repo = '~/Desktop/mprat_home_afs/meng-work/'
     else if strcmp(loc, 'mac')

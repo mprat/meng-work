@@ -78,4 +78,4 @@ if(useSingle), outClass='single'; else outClass='double'; end
 if(isempty(I) && flag>0 && flag~=4), I=I(:,:,[1 1 1]); end
 d=size(I,3); if(flag==4), flag=1; end; norm=(d==1 && flag==0) || flag==1;
 if( norm && isa(I,outClass) ), J=I; return; end
-J=rgbConvertMex(I,flag,useSingle);
+J=dollar_toolbox.channels.private.rgbConvertMex(I,flag,useSingle);

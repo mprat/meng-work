@@ -1,13 +1,14 @@
-function vid_name_to_slide_diffs(vid_name)
+function slide_diffs(vid_name)
 	% vid_name is the name of the video, of the form 'ID-EMaTF9-ArJY'
 	max_framenum = length(dir(['~/ed-vids/' vid_name '/image*.png'])); % only count the .png files
 
-	load(sprintf('%d-from-%s-predicted-labels.mat', max_framenum, vid_name));
-	load(sprintf('%d-from-%s.mat', max_framenum, vid_name));
+% 	load(sprintf('%d-from-%s-predicted-labels.mat', 256, vid_name));
+    d2 = load(sprintf('%d-from-%s.mat', 256, vid_name));
+	d3 = load('256-from-ID-EMaTF9-ArJY-predicted-labels-model-3-class-all-training-10-2-samples');
 
 	% get features of all the slides things.
-	features_slides = featureSet(predicted_label_num==2, :);
-	filenames_slide = list_of_filenames(predicted_label_num==2);
+	features_slides = d2.test_features(d3.predicted_label_num==2, :);
+	filenames_slide = d2.list_of_test_filenames(d3.predicted_label_num==2);
 	num_vecs = size(features_slides, 1);
 
 	% figure('Name', 'Current', 'NumberTitle', 'off');
@@ -15,7 +16,7 @@ function vid_name_to_slide_diffs(vid_name)
 	% figure('Name', 'Next', 'NumberTitle', 'off');
 	figure;
 
-	for index=1:num_vecs
+	for index=1:max_framenum
 		imcur = imread(filenames_slide{index});
 		subplot(2,2,1), imshow(imcur, 'InitialMagnification', 50), title('Current')
 		if index + 1 <= num_vecs

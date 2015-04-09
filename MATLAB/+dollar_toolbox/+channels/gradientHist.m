@@ -67,4 +67,4 @@ function H = gradientHist( M, O, varargin )
 % Please email me if you find bugs, or have suggestions or questions!
 % Licensed under the Simplified BSD License [see external/bsd.txt]
 
-H = gradientMex('gradientHist',M,O,varargin{:});
+H = dollar_toolbox.channels.private.gradientMex('gradientHist',M,O,varargin{:});
