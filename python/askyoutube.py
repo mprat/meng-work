@@ -47,14 +47,19 @@ with open('../vids_to_download/to_download_11_10_2014_all_IDS.txt') as f:
 		ID = f.readline()
 
 
-plt.hist(durations, bins=10)
-plt.title("Histogram of video lengths")
-plt.xlabel("Length (seconds)")
-plt.ylabel("Frequency")
-plt.show()
+#plt.hist(durations, bins=10)
+#plt.title("Histogram of video lengths")
+#plt.xlabel("Length (seconds)")
+#plt.ylabel("Frequency")
+#plt.show()
 
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
 plt.hist(durations_mins, bins=30)
 plt.title("Histogram of video lengths")
 plt.xlabel("Length (mins)")
 plt.ylabel("Frequency")
 plt.show()
+
+# on 6/17/2915 this output 60291 minutes
+print "Total number of minutes of content: ", sum(durations_mins)
